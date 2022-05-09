@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdk 32
-
+    apply plugin: 'kotlin-kapt'
     defaultConfig {
         applicationId "meh.daniel.com.movieunderbeer"
         minSdk 22
@@ -30,9 +31,24 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+ext{
+    dagger_version = "2.36"
+    moxy_version = "2.2.2"
+    cicerone_version = "7.1"
+}
 dependencies {
-
+    //dagger2
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //mvp moxy-  https://github.com/moxy-community/Moxy
+    implementation "com.github.moxy-community:moxy:$moxy_version"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy_version"
+    implementation "com.github.moxy-community:moxy-android:$moxy_version"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy_version"
+    implementation "com.github.moxy-community:moxy-material:$moxy_version"
+    //cicerone
+    implementation "com.github.terrakok:cicerone:$cicerone_version"
+    //other
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
