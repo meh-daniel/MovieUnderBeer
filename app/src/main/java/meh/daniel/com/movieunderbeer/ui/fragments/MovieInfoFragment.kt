@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui.screens.movieinfo
+package meh.daniel.com.movieunderbeer.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

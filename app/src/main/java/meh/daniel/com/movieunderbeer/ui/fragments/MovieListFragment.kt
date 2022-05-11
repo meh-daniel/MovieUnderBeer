@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui.screens.movielist
+package meh.daniel.com.movieunderbeer.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import meh.daniel.com.movieunderbeer.R
+import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 
 class MovieListFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentMovieListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_list, container, false)
+        binding = FragmentMovieListBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 }
