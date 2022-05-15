@@ -4,9 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import com.github.terrakok.cicerone.*
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.app.App
+import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.databinding.ActivityMainBinding
+import meh.daniel.com.movieunderbeer.di.modules.ApiModule
+import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.mvp.navigation.IScreens
 import meh.daniel.com.movieunderbeer.mvp.presenters.MainPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MainView
@@ -40,11 +45,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         vb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(vb?.root)
         Log.d("ayush:", "ы")
-
         if (savedInstanceState == null)
             navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))
-
-
     }
 
     override fun onResumeFragments() {

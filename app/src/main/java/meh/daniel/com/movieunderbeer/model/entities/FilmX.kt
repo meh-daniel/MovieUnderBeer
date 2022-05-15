@@ -1,7 +1,10 @@
 package meh.daniel.com.movieunderbeer.model.entities
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
+import meh.daniel.com.movieunderbeer.adapter.common.Item
 
+@Serializable
 data class FilmX(
     @SerializedName("id")
     val id: Int,
@@ -19,4 +22,6 @@ data class FilmX(
     val description: String,
     @SerializedName("genres")
     val genres: List<String>
-)
+) : Item{
+
+}
