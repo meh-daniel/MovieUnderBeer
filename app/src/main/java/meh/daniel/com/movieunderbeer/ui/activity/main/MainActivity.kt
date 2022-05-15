@@ -1,18 +1,17 @@
 package meh.daniel.com.movieunderbeer.ui.activity.main
 
 import android.os.Bundle
+import android.util.Log
 import com.github.terrakok.cicerone.*
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.databinding.ActivityMainBinding
 import meh.daniel.com.movieunderbeer.mvp.navigation.IScreens
-import meh.daniel.com.movieunderbeer.mvp.presenters.activity.host.MainPresenter
-import meh.daniel.com.movieunderbeer.mvp.presenters.activity.host.MainView
-import meh.daniel.com.movieunderbeer.ui.navigation.AppScreens
+import meh.daniel.com.movieunderbeer.mvp.presenters.MainPresenter
+import meh.daniel.com.movieunderbeer.mvp.view.MainView
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
@@ -40,14 +39,18 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         App.instance.appComponent.inject(this)
         vb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(vb?.root)
+        Log.d("ayush:", "ы")
 
         if (savedInstanceState == null)
             navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))
+
+
     }
 
     override fun onResumeFragments() {
         super.onResumeFragments()
     }
+
 
     override fun onPause() {
         super.onPause()
