@@ -8,7 +8,6 @@ import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.model.api.IDataSource
 import meh.daniel.com.movieunderbeer.model.api.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
@@ -41,7 +40,7 @@ class ApiModule {
     @Singleton
     @Provides
     fun gson(): Gson = GsonBuilder()
+        .setLenient()
         .create()
-
 
 }

@@ -1,11 +1,11 @@
-package meh.daniel.com.movieunderbeer.adapter
+package meh.daniel.com.movieunderbeer.adapters.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import meh.daniel.com.movieunderbeer.adapter.common.ItemFingerprint
-import meh.daniel.com.movieunderbeer.adapter.common.Item
+import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 
 class FingerprintAdapter(
     private val fingerprints: List<ItemFingerprint<*, *>>,
