@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapters.recycler
+package meh.daniel.com.movieunderbeer.adapters.recycler.base
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.model.entities
+package meh.daniel.com.movieunderbeer.model.entities.films
 
 
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,9 @@
 package meh.daniel.com.movieunderbeer.mvp.view
 
-import moxy.MvpView
+import meh.daniel.com.movieunderbeer.mvp.base.BaseView
+import moxy.viewstate.strategy.AddToEndStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
-interface MainView : MvpView {
+@StateStrategyType(AddToEndStrategy::class)
+interface MainView : BaseView {
 }

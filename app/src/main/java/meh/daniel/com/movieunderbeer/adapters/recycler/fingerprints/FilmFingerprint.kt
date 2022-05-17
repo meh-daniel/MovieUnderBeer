@@ -3,11 +3,11 @@ package meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import meh.daniel.com.movieunderbeer.R
-import meh.daniel.com.movieunderbeer.adapters.recycler.BaseViewHolder
+import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.databinding.ItemFilmBinding
-import meh.daniel.com.movieunderbeer.model.entities.Film
+import meh.daniel.com.movieunderbeer.model.entities.films.Film
 
 class FilmFingerprint : ItemFingerprint<ItemFilmBinding, Film> {
 

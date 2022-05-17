@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
-import meh.daniel.com.movieunderbeer.adapters.recycler.BaseViewHolder
+import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 
 interface ItemFingerprint <V : ViewBinding, I : Item> {
 

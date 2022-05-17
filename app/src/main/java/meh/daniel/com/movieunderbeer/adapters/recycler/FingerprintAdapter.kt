@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 
@@ -37,6 +38,11 @@ class FingerprintAdapter(
     fun setItems(newItems: List<Item>) {
         items.clear()
         items.addAll(newItems)
+        notifyDataSetChanged()
+    }
+
+    fun addItem(newItem: List<Item>){
+        items.addAll(newItem)
         notifyDataSetChanged()
     }
 

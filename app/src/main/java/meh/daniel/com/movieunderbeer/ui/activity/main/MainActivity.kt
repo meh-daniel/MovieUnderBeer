@@ -44,7 +44,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         App.instance.appComponent.inject(this)
         vb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(vb?.root)
-        Log.d("ayush:", "ы")
         if (savedInstanceState == null)
             navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))
     }
