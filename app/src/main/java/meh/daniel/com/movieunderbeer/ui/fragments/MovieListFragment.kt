@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import meh.daniel.com.movieunderbeer.R
@@ -95,16 +96,17 @@ class MovieListFragment : BaseFragment(), MovieListView {
             itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
                 animator.addViewTypeAnimation(R.layout.item_title, SlideInTopCommonAnimator())
                 animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
-                animator.addDuration = 500L
-                animator.removeDuration = 500L
+                animator.addDuration = 300L
             }
         }
+        filmAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT
     }
 
     override fun setData(titlesList: MutableList<Item>, filmsList: MutableList<Item>) {
         binding.contentFilms.postDelayed({
             titleAdapter.submitList(titlesList.toList())
             filmAdapter.submitList(filmsList.toList())
+            filmAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.ALLOW
         }, 300L)
     }
 }

@@ -1,5 +1,6 @@
 package meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,8 +9,10 @@ import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.databinding.ItemFilmBinding
 import meh.daniel.com.movieunderbeer.model.entities.films.Film
+import java.net.URL
 
 class FilmFingerprint : ItemFingerprint<ItemFilmBinding, Film> {
 
@@ -42,9 +45,28 @@ class FilmViewHolder(
 
     override fun onBind(item: Film) = with(binding) {
         rating.text = item.rating.toString()
-        Glide.with(imageFilm)
-            .load(item.imageUrl)
-            .into(imageFilm)
+        when {
+            item.imageUrl.isNullOrEmpty() -> {
+                Glide.with(imageFilm)
+                    .load(R.drawable.img_1)
+                    .into(imageFilm)
+            }
+            item.imageUrl != null -> {
+                Glide.with(imageFilm)
+                    .load(item.imageUrl)
+                    .into(imageFilm)
+
+            }
+            item.imageUrl == "null"-> {
+                Glide.with(imageFilm)
+                    .load(R.drawable.img_1)
+                    .into(imageFilm)
+
+            }
+        }
+
+        Log.d("xxx:", "${item.imageUrl.toString()} recycler")
+
         titleFilmTV.text = item.localizedName
     }
 

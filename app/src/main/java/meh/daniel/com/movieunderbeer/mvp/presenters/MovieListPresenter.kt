@@ -1,5 +1,6 @@
 package meh.daniel.com.movieunderbeer.mvp.presenters
 
+import android.net.Uri
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -15,6 +16,9 @@ import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import moxy.InjectViewState
 import retrofit2.Response
+import retrofit2.http.Path
+import retrofit2.http.Url
+import java.net.URL
 
 @InjectViewState
 class MovieListPresenter : BasePresenter<MovieListView>() {
@@ -51,11 +55,16 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
                                 if (items != null) {
                                     for (i in 0 until items.count()) {
-                                        val id = items[i].id?.toInt()
-                                        val localName = items[i].localizedName.toString()
-                                        val rating = items[i].rating?.toDouble()
-                                        val imageUrl = items[i].imageUrl?.toString()
-                                        listFilm.add(i, Film(id = id, localizedName = localName, name = null, year = null, rating = rating, imageUrl = imageUrl, description = null, genres = null))
+                                        var id = items[i].id?.toInt()
+                                        var localName = items[i].localizedName
+                                        var rating = items[i].rating?.toDouble()
+                                        var imageUrl = if(items[i].imageUrl != null){
+                                            "https://st.kp.yandex.net/images/film_iphone/" + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
+                                        }else{
+                                            null
+                                        }
+                                        listFilm.add(i, Film(id = id, localizedName = localName, name = null,
+                                            year = null, rating = rating, imageUrl =  imageUrl, description = null, genres = null))
                                         Log.d("xxx:", "${listFilm[i].toString()} fuck")
                                     }
                                 }
