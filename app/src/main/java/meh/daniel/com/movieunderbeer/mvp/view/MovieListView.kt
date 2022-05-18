@@ -12,6 +12,6 @@ interface MovieListView : BaseView {
 
     fun setupAdapter()
 
-    fun setData(items: List<Item>)
+    fun setData(titlesList: MutableList<Item>, filmsList: MutableList<Item>)
 
 }

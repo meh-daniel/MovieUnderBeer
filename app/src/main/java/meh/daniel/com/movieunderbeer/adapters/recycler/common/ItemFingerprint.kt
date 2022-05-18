@@ -3,6 +3,7 @@ package meh.daniel.com.movieunderbeer.adapters.recycler.common
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.DiffUtil
 import androidx.viewbinding.ViewBinding
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 
@@ -17,5 +18,7 @@ interface ItemFingerprint <V : ViewBinding, I : Item> {
         layoutInflater: LayoutInflater,
         parent: ViewGroup
     ): BaseViewHolder<V, I>
+
+    fun getDiffUtil(): DiffUtil.ItemCallback<I>
 
 }

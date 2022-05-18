@@ -1,7 +1,9 @@
 package meh.daniel.com.movieunderbeer.adapters.recycler.common.helpers
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
@@ -20,6 +22,15 @@ class TitleFingerprint : ItemFingerprint<ItemTitleBinding, FeedTitle> {
     ): BaseViewHolder<ItemTitleBinding, FeedTitle> {
         val binding = ItemTitleBinding.inflate(layoutInflater, parent, false)
         return TitleViewHolder(binding)
+    }
+
+    override fun getDiffUtil() = diffUtil
+
+    private val diffUtil = object : DiffUtil.ItemCallback<FeedTitle>() {
+        override fun areItemsTheSame(oldItem: FeedTitle, newItem: FeedTitle) = oldItem.title == oldItem.title
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: FeedTitle, newItem: FeedTitle) = oldItem == oldItem
     }
 }
 

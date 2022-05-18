@@ -5,13 +5,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.FingerprintAdapter
+import meh.daniel.com.movieunderbeer.adapters.recycler.animations.AddableItemAnimator
+import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SimpleCommonAnimator
+import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInLeftCommonAnimator
+import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInTopCommonAnimator
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.helpers.TitleFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.FeedHorizontalDividerItemDecoration
+import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.GroupVerticalItemDecoration
 import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.FilmFingerprint
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
@@ -32,7 +41,24 @@ import java.util.ArrayList
 class MovieListFragment : BaseFragment(), MovieListView {
 
     private lateinit var binding: FragmentMovieListBinding
-    private lateinit var adapter: FingerprintAdapter
+
+    private val titlesList: MutableList<Item> by lazy {
+        MutableList(1) { FeedTitle("Та за шо ты меня так") }
+    }
+//    private val filmsList: MutableList<Item> by lazy {
+//        MutableList(1) {Film(id = 1, localizedName = "localName", name = null, year = null, rating = 3.3, imageUrl = "https://st.kp.yandex.net/images/film_iphone/iphone360_42664.jpg", description = null, genres = null)}
+//    }
+
+    private val titleAdapter = FingerprintAdapter(listOf(TitleFingerprint()))
+    private val filmAdapter = FingerprintAdapter(listOf(FilmFingerprint()))
+
+    private val concatAdapter = ConcatAdapter(
+        ConcatAdapter.Config.Builder()
+            .setIsolateViewTypes(false)
+            .build(),
+        titleAdapter,
+        filmAdapter
+    )
 
 
     @InjectPresenter
@@ -50,75 +76,39 @@ class MovieListFragment : BaseFragment(), MovieListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
-        workApi()
+        movieListPresenter.start(titlesList)
     }
 
-
-    private fun workApi(){
-        lateinit var listFilm: List<Item>
-        lateinit var result: Response<FilmData>
-        GlobalScope.launch {
-            try {
-                val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
-                val repo = RepositoryModule().filmRepository(api)
-                result = repo.loadFilms()
-            } catch (e: Exception) {
-                Log.d("expection:", "${e.toString()} fuck")
-            }
-
-            try {
-                if (result.isSuccessful) {
-                    val items = result.body()?.films
-
-                    if (items != null) {
-
-                        for (i in 0 until items.count()) {
-                            val id = items[i].id?.toInt()
-                            Log.d("xxx:", "${id.toString()} fuck")
-                            val localName = items[i].localizedName.toString()
-                            Log.d("xxx:", "${localName.toString()} fuck")
-                            val rating = items[i].rating?.toDouble()
-                            Log.d("xxx:", "${rating.toString()} fuck")
-                            if(i == 0){
-                                listFilm = List(i){
-                                    Film(id = id, localizedName = localName, name = null, year = null, rating = rating, imageUrl = null, description = null, genres = null)
-                                }
-                            }
-                            listFilm = listFilm + listOf<Item>(
-                                Film(id = id, localizedName = localName, name = null, year = null, rating = rating, imageUrl = null, description = null, genres = null)
-                            )
-
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                Log.d("expection:", "${e.toString()} fuck")
-            }
-            movieListPresenter.start(listFilm)
-        }
-    }
-
-
-    private fun getFingerprints() = listOf(
-        TitleFingerprint(),
-        FilmFingerprint()
-    )
     override fun injectDependency(){
-            movieListPresenter.injectDependency()
+        movieListPresenter.injectDependency()
     }
-
 
     override fun setupAdapter() {
-        adapter = FingerprintAdapter(getFingerprints())
         with(binding.contentFilms) {
-            layoutManager = LinearLayoutManager(context)
-            adapter = this@MovieListFragment.adapter
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = concatAdapter
+
+            addItemDecoration(FeedHorizontalDividerItemDecoration(70))
+            addItemDecoration(GroupVerticalItemDecoration(R.layout.item_title, 50, 100))
+            addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 40, 0))
+
+            itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
+                animator.addViewTypeAnimation(R.layout.item_title, SlideInTopCommonAnimator())
+                animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
+                animator.addDuration = 500L
+                animator.removeDuration = 500L
+            }
         }
     }
 
-    override fun setData(items: List<Item>) {
-        adapter.setItems(items)
+    override fun setData(titlesList: MutableList<Item>, filmsList: MutableList<Item>) {
+        binding.contentFilms.postDelayed({
+            titleAdapter.submitList(titlesList.toList())
+            filmAdapter.submitList(filmsList.toList())
+        }, 300L)
     }
-
-
 }
+
+
+
+

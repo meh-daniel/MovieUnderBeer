@@ -2,6 +2,7 @@ package meh.daniel.com.movieunderbeer.adapters.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
@@ -10,9 +11,9 @@ import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 
 class FingerprintAdapter(
     private val fingerprints: List<ItemFingerprint<*, *>>,
-) : RecyclerView.Adapter<BaseViewHolder<ViewBinding, Item>>() {
-
-    private val items = mutableListOf<Item>()
+) : ListAdapter<Item, BaseViewHolder<ViewBinding, Item>>(
+    FingerprintDiffUtil(fingerprints)
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<ViewBinding, Item> {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,27 +24,14 @@ class FingerprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-        holder.onBind(items[position])
+        holder.onBind(currentList[position])
     }
 
-    override fun getItemCount() = items.size
-
     override fun getItemViewType(position: Int): Int {
-        val item = items[position]
+        val item = currentList[position]
         return fingerprints.find { it.isRelativeItem(item) }
             ?.getLayoutId()
             ?: throw IllegalArgumentException("View type not found: $item")
-    }
-
-    fun setItems(newItems: List<Item>) {
-        items.clear()
-        items.addAll(newItems)
-        notifyDataSetChanged()
-    }
-
-    fun addItem(newItem: List<Item>){
-        items.addAll(newItem)
-        notifyDataSetChanged()
     }
 
 }

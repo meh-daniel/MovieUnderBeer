@@ -2,6 +2,8 @@ package meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
@@ -22,6 +24,16 @@ class FilmFingerprint : ItemFingerprint<ItemFilmBinding, Film> {
         val binding = ItemFilmBinding.inflate(layoutInflater, parent, false)
         return FilmViewHolder(binding)
     }
+
+    override fun getDiffUtil() = diffUtil
+
+    private val diffUtil = object : DiffUtil.ItemCallback<Film>() {
+
+        override fun areItemsTheSame(oldItem: Film, newItem: Film) = oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: Film, newItem: Film) = oldItem == newItem
+
+    }
 }
 
 class FilmViewHolder(
@@ -30,6 +42,9 @@ class FilmViewHolder(
 
     override fun onBind(item: Film) = with(binding) {
         rating.text = item.rating.toString()
+        Glide.with(imageFilm)
+            .load(item.imageUrl)
+            .into(imageFilm)
         titleFilmTV.text = item.localizedName
     }
 
