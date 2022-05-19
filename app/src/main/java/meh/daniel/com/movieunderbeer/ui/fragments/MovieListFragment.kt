@@ -1,14 +1,12 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
 import android.os.Bundle
+import android.provider.MediaStore.Files.FileColumns.PARENT
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import meh.daniel.com.movieunderbeer.R
@@ -79,15 +77,16 @@ class MovieListFragment : BaseFragment(), MovieListView {
         injectDependency()
         movieListPresenter.start(titlesList)
     }
-
     override fun injectDependency(){
         movieListPresenter.injectDependency()
     }
 
     override fun setupAdapter() {
+
         with(binding.contentFilms) {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
             adapter = concatAdapter
+
 
             addItemDecoration(FeedHorizontalDividerItemDecoration(70))
             addItemDecoration(GroupVerticalItemDecoration(R.layout.item_title, 50, 100))
