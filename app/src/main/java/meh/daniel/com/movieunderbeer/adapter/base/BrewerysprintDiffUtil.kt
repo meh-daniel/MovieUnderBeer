@@ -1,11 +1,11 @@
-package meh.daniel.com.movieunderbeer.adapters.recycler
+package meh.daniel.com.movieunderbeer.adapter.base
 
 import androidx.recyclerview.widget.DiffUtil
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapter.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 
-class FingerprintDiffUtil(
-    private val fingerprints: List<ItemFingerprint<*, *>>,
+class BrewerysprintDiffUtil(
+    private val fingerprints: List<ItemBrewerysprint<*, *>>,
 ) : DiffUtil.ItemCallback<Item>() {
 
     override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
@@ -18,12 +18,6 @@ class FingerprintDiffUtil(
         if (oldItem::class != newItem::class) return false
 
         return getItemCallback(oldItem).areContentsTheSame(oldItem, newItem)
-    }
-
-    override fun getChangePayload(oldItem: Item, newItem: Item): Any? {
-        if(oldItem::class != newItem::class) return false
-
-        return super.getChangePayload(oldItem, newItem)
     }
 
     private fun getItemCallback(

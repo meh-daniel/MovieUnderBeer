@@ -1,18 +1,16 @@
-package meh.daniel.com.movieunderbeer.adapters.recycler
+package meh.daniel.com.movieunderbeer.adapter.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 
-class FingerprintAdapter(
-    private val fingerprints: List<ItemFingerprint<*, *>>,
+abstract class BrewerysprintAdapter(
+    private val fingerprints: List<ItemBrewerysprint<*, *>>,
 ) : ListAdapter<Item, BaseViewHolder<ViewBinding, Item>>(
-    FingerprintDiffUtil(fingerprints)
+    BrewerysprintDiffUtil(fingerprints)
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<ViewBinding, Item> {
@@ -24,7 +22,7 @@ class FingerprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-        holder.onBind(currentList[position])
+        holder.onBind (currentList[position])
     }
 
     override fun getItemViewType(position: Int): Int {

@@ -1,7 +1,7 @@
 package meh.daniel.com.movieunderbeer.model.repositories
 
 import meh.daniel.com.movieunderbeer.model.api.IDataSource
-import meh.daniel.com.movieunderbeer.model.entities.films.FilmData
+import meh.daniel.com.movieunderbeer.entities.films.FilmData
 import retrofit2.Response
 
 class RetrofitFilmRepository(

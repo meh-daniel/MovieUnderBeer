@@ -1,8 +1,8 @@
-package meh.daniel.com.movieunderbeer.model.entities.films
+package meh.daniel.com.movieunderbeer.entities.films
 
 
 import com.google.gson.annotations.SerializedName
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.Item
 
 data class Film(
     @SerializedName("id")
@@ -10,7 +10,7 @@ data class Film(
     @SerializedName("localized_name")
     val localizedName: String? = null,
     @SerializedName("name")
-    val name: String? = null,
+    val name: String,
     @SerializedName("year")
     val year: Int? = null,
     @SerializedName("rating")
