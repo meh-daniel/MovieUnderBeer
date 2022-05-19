@@ -26,10 +26,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         App.instance.appComponent.inject(this)
     }
 
-
-
-//    private var filmsList: MutableList<Item> = MutableList(1){Film(id = 1, localizedName = "localName", name = null, year = null, rating = 3.3, imageUrl = null, description = null, genres = null)}
-
     fun start(titlesList: MutableList<Item>){
         GlobalScope.launch {
             try {
@@ -79,33 +75,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                 Log.d("expection:", "${e.toString()} fuck scope2")
             }
         }
-    }
-
-    private fun getBodyResponse(response: Response<FilmData>): MutableList<Item>{
-        var listFilm = mutableListOf<Item>()
-        GlobalScope.launch {
-            try {
-                if (response.isSuccessful) {
-                    val items = response.body()?.films
-
-                    if (items != null) {
-                        for (i in 0 until items.count()) {
-                            val id = items[i].id?.toInt()
-                            val localName = items[i].localizedName.toString()
-                            val rating = items[i].rating?.toDouble()
-                            val imageUrl = items[i].imageUrl?.toString()
-                            listFilm.add(i, Film(id = id, localizedName = localName, name = null, year = null, rating = rating, imageUrl = imageUrl, description = null, genres = null))
-                            Log.d("xxx:", "${listFilm[i].toString()} fuck")
-                        }
-                    }
-
-                }
-            } catch (e: Exception) {
-                Log.d("expection:", "${e.toString()} fuck")
-            }
-        }
-        Log.d("expection:", "${listFilm[5].toString()} fuck")
-        return listFilm
     }
 
 }

@@ -26,8 +26,7 @@ class FingerprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-        val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
-        layoutParams.isFullSpan = true
+
         holder.onBind(currentList[position])
     }
 
@@ -37,27 +36,4 @@ class FingerprintAdapter(
             ?.getLayoutId()
             ?: throw IllegalArgumentException("View type not found: $item")
     }
-//    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-//        super.onAttachedToRecyclerView(recyclerView)
-//        (recyclerView.layoutManager as GridLayoutManager).spanSizeLookup = getSpanSizeLookup()
-//    }
-//
-//    private fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
-//        return object : GridLayoutManager.SpanSizeLookup() {
-//            override fun getSpanSize(position: Int): Int {
-//                return when (fingerprints[position]) {
-//                    Type.TITLE.ordinal -> SPAN_SIZE
-//                    Type.DIGIT.ordinal -> DIGIT_SPAN_SIZE
-//                    else -> DEFAULT_SPAN_SIZE
-//                }
-//            }
-//        }
-//    }
-//    companion object {
-//        const val SPAN_SIZE = 4
-//        const val DIGIT_SPAN_SIZE = 2
-//        private const val DEFAULT_SPAN_SIZE = 1
-//        private val LOG_TAG = ListAdapter::class.java.simpleName
-//        private const val ITEM_SELECTION_PAYLOAD = "item_selection_payload"
-//    }
 }
