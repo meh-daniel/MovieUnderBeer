@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.FingerprintAdapter
@@ -74,13 +75,18 @@ class MovieListFragment : BaseFragment(), MovieListView {
 
         try {
             with(binding.contentFilms) {
-                layoutManager = GridLayoutManager(context, 2)
+                var gridLayoutManager = GridLayoutManager(context, 2)
+                gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (position % 3 === 0) 2 else 1
+                    }
+                }
+                layoutManager = gridLayoutManager
                 adapter = concatAdapter
-
 
                 addItemDecoration(FeedHorizontalDividerItemDecoration(70))
                 addItemDecoration(GroupVerticalItemDecoration(R.layout.item_title, 50, 100))
-                addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 40, 0))
+                addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 0, 0))
 
                 itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
                     animator.addViewTypeAnimation(R.layout.item_title, SlideInTopCommonAnimator())

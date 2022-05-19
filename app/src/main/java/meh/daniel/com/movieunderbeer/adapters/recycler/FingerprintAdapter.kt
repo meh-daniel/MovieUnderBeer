@@ -26,7 +26,6 @@ class FingerprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-
         holder.onBind(currentList[position])
     }
 
