@@ -1,8 +1,6 @@
 package meh.daniel.com.movieunderbeer.mvp.view
 
-import com.google.android.material.circularreveal.CircularRevealHelper
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseListItem
 import meh.daniel.com.movieunderbeer.mvp.base.BaseView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -12,6 +10,6 @@ interface MovieListView : BaseView {
 
     fun setupAdapter()
 
-    fun setData(titlesList: MutableList<Item>, filmsList: MutableList<Item>)
+    fun setData(dataList: MutableList<BaseListItem>)
 
 }

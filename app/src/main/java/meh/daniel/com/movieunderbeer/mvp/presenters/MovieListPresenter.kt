@@ -5,20 +5,19 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
+import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseListItem
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.di.modules.ApiModule
 import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.model.entities.films.Film
 import meh.daniel.com.movieunderbeer.model.entities.films.FilmData
+import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedGenre
+import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import moxy.InjectViewState
 import retrofit2.Response
-import retrofit2.http.Path
-import retrofit2.http.Url
-import java.net.URL
 
 @InjectViewState
 class MovieListPresenter : BasePresenter<MovieListView>() {
@@ -26,7 +25,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         App.instance.appComponent.inject(this)
     }
 
-    fun start(titlesList: MutableList<Item>){
+    fun start(){
         GlobalScope.launch {
             try {
                 viewState.setupAdapter()
@@ -43,7 +42,18 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
 
 
-                    var listFilm = mutableListOf<Item>()
+                    var dataItems = mutableListOf<BaseListItem>()
+
+                    dataItems.add(FeedTitle("Жанры"))
+                    dataItems.add(FeedGenre("Комедия"))
+                    dataItems.add(FeedGenre("Трагедия"))
+                    dataItems.add(FeedGenre("Комедия"))
+                    dataItems.add(FeedGenre("Трагедия"))
+                    dataItems.add(FeedGenre("Комедия"))
+                    dataItems.add(FeedGenre("Трагедия"))
+                    dataItems.add(FeedGenre("Комедия"))
+                    dataItems.add(FeedGenre("Трагедия"))
+                    dataItems.add(FeedTitle("Фильмы"))
                     GlobalScope.launch {
                         try {
                             if (response.isSuccessful) {
@@ -59,12 +69,12 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                                         }else{
                                             null
                                         }
-                                        listFilm.add(i, Film(id = id, localizedName = localName, name = null,
+                                        dataItems.add(Film(id = id, localizedName = localName, name = null,
                                             year = null, rating = rating, imageUrl =  imageUrl, description = null, genres = null))
-                                        Log.d("xxx:", "${listFilm[i].toString()} fuck")
+                                        Log.d("xxx:", "${dataItems[i].toString()} fuck")
                                     }
                                 }
-                                viewState.setData(titlesList, listFilm)
+                                viewState.setData(dataItems)
                             }
                         } catch (e: Exception) {
                             Log.d("expection:", "${e.toString()} fuck")
