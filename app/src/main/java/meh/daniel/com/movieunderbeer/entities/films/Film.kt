@@ -1,8 +1,8 @@
-package meh.daniel.com.movieunderbeer.model.entities.films
+package meh.daniel.com.movieunderbeer.entities.films
 
 
 import com.google.gson.annotations.SerializedName
-import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseListItem
+import meh.daniel.com.movieunderbeer.adapter.common.Item
 
 data class Film(
     @SerializedName("id")
@@ -21,6 +21,4 @@ data class Film(
     val description: String? = null,
     @SerializedName("genres")
     val genres: List<String>? = null
-) : BaseListItem() {
-    override fun getType() = Type.FILM.ordinal
-}
+) : Item
