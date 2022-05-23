@@ -18,9 +18,4 @@ class HeaderViewHolder : ViewHolderVisitor {
     override fun bind(binding: ViewDataBinding, item: Any, clickListener: AdapterClickListenerById) {
         (binding as ItemTitleBinding).headerItem = item as FeedHeader
     }
-
-    override fun getDiffUtil(): DiffUtil.ItemCallback<Item> {
-        TODO("Not yet implemented")
-    }
-
 }

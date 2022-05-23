@@ -2,6 +2,7 @@ package meh.daniel.com.movieunderbeer.adapter.viewHolders
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapter.common.AdapterClickListenerById
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -18,11 +19,32 @@ class FilmViewHolder : ViewHolderVisitor {
     override fun bind(binding: ViewDataBinding, item: Any, clickListener: AdapterClickListenerById) {
         with(binding as ItemFilmBinding) {
             film = item as Film
-        }
-    }
 
-    override fun getDiffUtil(): DiffUtil.ItemCallback<Item> {
-        TODO("Not yet implemented")
+            when {
+                item.imageUrl.isNullOrEmpty() -> {
+                    Glide.with(cardPosterFilm)
+                        .load(R.drawable.img_1)
+                        .into(cardPosterFilm)
+                }
+                item.imageUrl != null -> {
+                    Glide.with(cardPosterFilm)
+                        .load(item.imageUrl)
+                        .into(cardPosterFilm)
+
+                }
+                item.imageUrl == "null"-> {
+                    Glide.with(cardPosterFilm)
+                        .load(R.drawable.img_1)
+                        .into(cardPosterFilm)
+
+                }
+                else -> {
+                    Glide.with(cardPosterFilm)
+                        .load(R.drawable.img_1)
+                        .into(cardPosterFilm)
+                }
+            }
+        }
     }
 
 }

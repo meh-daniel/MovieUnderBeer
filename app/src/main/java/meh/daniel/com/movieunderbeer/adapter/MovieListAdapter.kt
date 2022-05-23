@@ -28,7 +28,7 @@ class MovieListAdapter(
                 return when (getItemViewType(position)) {
                     ItemTypes.HEADER -> 4
                     ItemTypes.CARD -> 2
-                    ItemTypes.CHIP -> 1
+                    ItemTypes.CHIP -> 2
                     else -> 2
                 }
             }

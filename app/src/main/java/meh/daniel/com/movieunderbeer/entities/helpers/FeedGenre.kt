@@ -5,4 +5,4 @@ import meh.daniel.com.movieunderbeer.entities.films.Film
 
 data class FeedGenre (
     var name: String
-    )
+    ) : Item

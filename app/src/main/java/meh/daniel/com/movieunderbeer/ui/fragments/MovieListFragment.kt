@@ -13,8 +13,11 @@ import meh.daniel.com.movieunderbeer.adapter.base.BaseListAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.AdapterClickListenerById
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.adapter.viewHolders.FilmViewHolder
+import meh.daniel.com.movieunderbeer.adapter.viewHolders.GenreViewHolder
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
+import meh.daniel.com.movieunderbeer.di.modules.AdapterModule
 import meh.daniel.com.movieunderbeer.entities.films.Film
+import meh.daniel.com.movieunderbeer.entities.helpers.FeedGenre
 import meh.daniel.com.movieunderbeer.entities.helpers.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
@@ -30,8 +33,8 @@ class MovieListFragment : BaseFragment(), MovieListView {
 
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
-    @Inject
-    lateinit var viewHoldersManager: ViewHoldersManager
+//    @Inject
+//    lateinit var viewHoldersManager: ViewHoldersManager
 
     override fun injectDependency() {
         movieListPresenter.injectDependency()
@@ -50,50 +53,18 @@ class MovieListFragment : BaseFragment(), MovieListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
-//        movieListPresenter.start()
-        var viewHolderManager: ViewHoldersManager = ViewHoldersManagerImpl().apply {
-            registerViewHolder(ItemTypes.HEADER, HeaderViewHolder())
-            registerViewHolder(ItemTypes.CARD, FilmViewHolder())
-        }
-        val itemsAdapter : BaseListAdapter = MovieListAdapter(AdapterClickListenerById {}, viewHolderManager)
-
-        itemsAdapter.submitList(mutableListOf<Item>(
-            FeedHeader("Фильмы"),
-            Film(id = 1, localizedName = "localName", name = null,
-                year = null, rating = 3.3, imageUrl =  null, description = null, genres = null),
-            Film(id = 1, localizedName = "localName", name = null,
-                year = null, rating = 3.3, imageUrl =  null, description = null, genres = null),
-            FeedHeader("Фильмы"),
-            Film(id = 1, localizedName = "localName", name = null,
-                year = null, rating = 3.3, imageUrl =  null, description = null, genres = null),
-            FeedHeader("Фильмы"),
-            Film(id = 1, localizedName = "localName", name = null,
-                year = null, rating = 3.3, imageUrl =  null, description = null, genres = null)
-        ))
-        try {
-            with(binding.contentFilms) {
-                layoutManager = GridLayoutManager(context, 4)
-                adapter = itemsAdapter
-            }
-        }catch (e : Exception){
-            Log.d("expection:", "${e.toString()} fuck scope1")
-        }
+        movieListPresenter.start()
 
     }
 
     override fun setupAdapter(dataList : MutableList<Item>) {
-        var viewHolderManager: ViewHoldersManager = ViewHoldersManagerImpl().apply {
-            registerViewHolder(ItemTypes.HEADER, HeaderViewHolder())
-            registerViewHolder(ItemTypes.CARD, FilmViewHolder())
-        }
-        val itemsAdapter = MovieListAdapter(AdapterClickListenerById {}, viewHolderManager)
-        itemsAdapter.submitList(dataList)
+        val itemsAdapter : BaseListAdapter = MovieListAdapter(AdapterClickListenerById {}, AdapterModule().provideAdaptersManager())
+        itemsAdapter.submitList(dataList.toList())
         try {
             with(binding.contentFilms) {
                 layoutManager = GridLayoutManager(context, 4)
                 adapter = itemsAdapter
             }
-
         }catch (e : Exception){
             Log.d("expection:", "${e.toString()} fuck scope1")
         }

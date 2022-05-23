@@ -9,5 +9,4 @@ interface ViewHolderVisitor {
     fun getLayoutId() : Int
     fun acceptBinding(item: Item): Boolean
     fun bind(binding: ViewDataBinding, item: Any, clickListener: AdapterClickListenerById)
-    fun getDiffUtil(): DiffUtil.ItemCallback<Item>
 }

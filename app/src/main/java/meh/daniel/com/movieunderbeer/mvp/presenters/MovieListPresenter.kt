@@ -12,6 +12,7 @@ import meh.daniel.com.movieunderbeer.di.modules.ApiModule
 import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.films.FilmData
+import meh.daniel.com.movieunderbeer.entities.helpers.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import moxy.InjectViewState
@@ -30,12 +31,11 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                     val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
                     val repo = RepositoryModule().filmRepository(api)
                     var response: Response<FilmData> = repo.loadFilms()
-                    Log.d("expection:", "${response.body().toString()} fuck scope1")
-
-
-
-                    var dataItems = mutableListOf<Item>()
+                    var dataItems = mutableListOf<Item>(
+                        FeedHeader("фильмы")
+                    )
                     GlobalScope.launch {
+
                         try {
                             if (response.isSuccessful) {
                                 val items = response.body()?.films
@@ -56,12 +56,13 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                                         Log.d("xxx:", "${dataItems[i].toString()} fuck")
                                     }
                                 }
-                                viewState.setupAdapter(dataItems)
                             }
                         } catch (e: Exception) {
                             Log.d("expection:", "${e.toString()} fuck")
                         }
+
                     }
+                    viewState.setupAdapter(dataItems)
                 }
             }catch (e:Exception){
                 Log.d("expection:", "${e.toString()} fuck scope2")
