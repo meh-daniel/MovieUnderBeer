@@ -10,7 +10,7 @@ data class Film(
     @SerializedName("localized_name")
     val localizedName: String? = null,
     @SerializedName("name")
-    val name: String? = null,
+    override val name: String,
     @SerializedName("year")
     val year: Int? = null,
     @SerializedName("rating")

@@ -1,5 +1,7 @@
 package meh.daniel.com.movieunderbeer.adapter.base
 
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,8 +22,7 @@ import ru.alexmaryin.recycleronvisitor.ui.adapter.ViewHoldersManager
 abstract class BaseListAdapter(
     private val clickListener: AdapterClickListenerById,
     private val viewHoldersManager: ViewHoldersManager
-) : ListAdapter<Item, BaseListAdapter.DataViewHolder>(BaseDiffCallback(viewHoldersManager)) {
-
+) : ListAdapter<Item, BaseListAdapter.DataViewHolder>(BaseDiffCallback()) {
     inner class DataViewHolder(
         private val binding: ViewDataBinding,
         private val holder: ViewHolderVisitor
@@ -39,8 +40,5 @@ abstract class BaseListAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) = holder.bind(getItem(position), clickListener)
 
     override fun getItemViewType(position: Int): Int = viewHoldersManager.getItemType(getItem(position))
-
-
-
 }
 

@@ -1,11 +1,16 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
+import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import meh.daniel.com.movieunderbeer.adapter.ItemTypes
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.ViewHoldersManagerImpl
@@ -14,18 +19,25 @@ import meh.daniel.com.movieunderbeer.adapter.common.AdapterClickListenerById
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.adapter.viewHolders.FilmViewHolder
 import meh.daniel.com.movieunderbeer.adapter.viewHolders.GenreViewHolder
+import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.di.modules.AdapterModule
+import meh.daniel.com.movieunderbeer.di.modules.ApiModule
+import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.entities.films.Film
+import meh.daniel.com.movieunderbeer.entities.films.FilmData
 import meh.daniel.com.movieunderbeer.entities.helpers.FeedGenre
 import meh.daniel.com.movieunderbeer.entities.helpers.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
+import retrofit2.Response
 import ru.alexmaryin.recycleronvisitor.ui.adapter.ViewHoldersManager
 import ru.alexmaryin.recycleronvisitor.ui.viewHolders.HeaderViewHolder
+import java.util.*
 import javax.inject.Inject
+import kotlin.concurrent.schedule
 
 class MovieListFragment : BaseFragment(), MovieListView {
 
@@ -33,8 +45,6 @@ class MovieListFragment : BaseFragment(), MovieListView {
 
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
-//    @Inject
-//    lateinit var viewHoldersManager: ViewHoldersManager
 
     override fun injectDependency() {
         movieListPresenter.injectDependency()
@@ -54,7 +64,7 @@ class MovieListFragment : BaseFragment(), MovieListView {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
         movieListPresenter.start()
-
+        Log.d("expection:", "start1")
     }
 
     override fun setupAdapter(dataList : MutableList<Item>) {
