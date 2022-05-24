@@ -12,6 +12,7 @@ import meh.daniel.com.movieunderbeer.di.modules.ApiModule
 import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.model.entities.films.Film
 import meh.daniel.com.movieunderbeer.model.entities.films.FilmData
+import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import moxy.InjectViewState
@@ -26,13 +27,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         App.instance.appComponent.inject(this)
     }
 
-    fun start(titlesList: MutableList<Item>){
+    fun start(){
         GlobalScope.launch {
-            try {
-                viewState.setupAdapter()
-            }catch (e:Exception){
-                Log.d("expection:", "${e.toString()} fuck scope1")
-            }
             try {
 
                 GlobalScope.launch(Dispatchers.Main) {
@@ -43,7 +39,9 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
 
 
-                    var listFilm = mutableListOf<Item>()
+                    var listFilm = mutableListOf<Item>(
+                        FeedTitle("Э бля")
+                    )
                     GlobalScope.launch {
                         try {
                             if (response.isSuccessful) {
@@ -59,17 +57,19 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                                         }else{
                                             null
                                         }
-                                        listFilm.add(i, Film(id = id, localizedName = localName, name = null,
+                                        listFilm.add(Film(id = id, localizedName = localName, name = null,
                                             year = null, rating = rating, imageUrl =  imageUrl, description = null, genres = null))
                                         Log.d("xxx:", "${listFilm[i].toString()} fuck")
                                     }
                                 }
-                                viewState.setData(titlesList, listFilm)
+
                             }
                         } catch (e: Exception) {
                             Log.d("expection:", "${e.toString()} fuck")
                         }
+
                     }
+                    viewState.setData(listFilm)
                 }
             }catch (e:Exception){
                 Log.d("expection:", "${e.toString()} fuck scope2")

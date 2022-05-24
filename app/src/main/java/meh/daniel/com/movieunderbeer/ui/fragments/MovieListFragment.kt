@@ -15,10 +15,10 @@ import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SimpleC
 import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInLeftCommonAnimator
 import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInTopCommonAnimator
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.helpers.TitleFingerprint
 import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.FeedHorizontalDividerItemDecoration
 import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.GroupVerticalItemDecoration
 import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.FilmFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.TitleFingerprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
@@ -30,27 +30,9 @@ class MovieListFragment : BaseFragment(), MovieListView {
 
     private lateinit var binding: FragmentMovieListBinding
 
-    private val titlesList: MutableList<Item> by lazy {
-        MutableList(1) { FeedTitle("Та за шо ты меня так") }
-    }
-//    private val filmsList: MutableList<Item> by lazy {
-//        MutableList(1) {Film(id = 1, localizedName = "localName", name = null, year = null, rating = 3.3, imageUrl = "https://st.kp.yandex.net/images/film_iphone/iphone360_42664.jpg", description = null, genres = null)}
-//    }
-
-    private val titleAdapter = FingerprintAdapter(listOf(TitleFingerprint()))
-    private val filmAdapter = FingerprintAdapter(listOf(FilmFingerprint()))
-
-    private val concatAdapter = ConcatAdapter(
-        ConcatAdapter.Config.Builder()
-            .setIsolateViewTypes(false)
-            .build(),
-        titleAdapter,
-        filmAdapter
-    )
-
-
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
+    private lateinit var adapter: FingerprintAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,43 +46,26 @@ class MovieListFragment : BaseFragment(), MovieListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
-        movieListPresenter.start(titlesList)
+        movieListPresenter.start()
     }
     override fun injectDependency(){
         movieListPresenter.injectDependency()
     }
-
-    override fun setupAdapter() {
-
+    private fun getFingerprints() = listOf(
+        TitleFingerprint(),
+        FilmFingerprint()
+    )
+    override fun setData(dataList: MutableList<Item>) {
+        adapter = FingerprintAdapter(getFingerprints())
         try {
             with(binding.contentFilms) {
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = concatAdapter
-
-
-                addItemDecoration(FeedHorizontalDividerItemDecoration(70))
-                addItemDecoration(GroupVerticalItemDecoration(R.layout.item_title, 50, 100))
-                addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 40, 0))
-
-                itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
-                    animator.addViewTypeAnimation(R.layout.item_title, SlideInTopCommonAnimator())
-                    animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
-                    animator.addDuration = 300L
-                }
-                filmAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT
+                layoutManager = GridLayoutManager(context, 4)
+                adapter = this@MovieListFragment.adapter
             }
-
+            adapter.submitList( dataList )
         }catch (e : Exception){
             Log.d("expection:", "${e.toString()} fuck scope1")
         }
-    }
-
-    override fun setData(titlesList: MutableList<Item>, filmsList: MutableList<Item>) {
-        binding.contentFilms.postDelayed({
-            titleAdapter.submitList(titlesList.toList())
-            filmAdapter.submitList(filmsList.toList())
-            filmAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.ALLOW
-        }, 300L)
     }
 }
 

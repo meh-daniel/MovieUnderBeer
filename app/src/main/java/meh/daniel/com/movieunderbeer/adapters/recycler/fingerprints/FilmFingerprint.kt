@@ -44,30 +44,29 @@ class FilmViewHolder(
 ) : BaseViewHolder<ItemFilmBinding, Film>(binding) {
 
     override fun onBind(item: Film) = with(binding) {
-        rating.text = item.rating.toString()
         when {
             item.imageUrl.isNullOrEmpty() -> {
-                Glide.with(imageFilm)
+                Glide.with(filmBackgroundImage)
                     .load(R.drawable.img_1)
-                    .into(imageFilm)
+                    .into(filmBackgroundImage)
             }
             item.imageUrl != null -> {
-                Glide.with(imageFilm)
+                Glide.with(filmBackgroundImage)
                     .load(item.imageUrl)
-                    .into(imageFilm)
+                    .into(filmBackgroundImage)
 
             }
             item.imageUrl == "null"-> {
-                Glide.with(imageFilm)
+                Glide.with(filmBackgroundImage)
                     .load(R.drawable.img_1)
-                    .into(imageFilm)
+                    .into(filmBackgroundImage)
 
             }
         }
 
         Log.d("xxx:", "${item.imageUrl.toString()} recycler")
 
-        titleFilmTV.text = item.localizedName
+        filmTitleName.text = item.localizedName
     }
 
 }

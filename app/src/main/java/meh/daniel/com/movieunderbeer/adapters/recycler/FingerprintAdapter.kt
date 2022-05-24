@@ -1,5 +1,6 @@
 package meh.daniel.com.movieunderbeer.adapters.recycler
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,9 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewbinding.ViewBinding
+import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
+import meh.daniel.com.movieunderbeer.model.entities.films.Film
+import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
 
 class FingerprintAdapter(
     private val fingerprints: List<ItemFingerprint<*, *>>,
@@ -26,7 +30,6 @@ class FingerprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-
         holder.onBind(currentList[position])
     }
 
@@ -36,4 +39,25 @@ class FingerprintAdapter(
             ?.getLayoutId()
             ?: throw IllegalArgumentException("View type not found: $item")
     }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        try {
+            (recyclerView.layoutManager as GridLayoutManager).spanSizeLookup = getSpanSizeLookup()
+        } catch (e : Exception){
+            Log.d("xxx:", e.toString())
+        }
+    }
+
+    private fun getSpanSizeLookup(): GridLayoutManager.SpanSizeLookup {
+        return object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (currentList[position]) {
+                    is FeedTitle -> 4
+                    else -> 2
+                }
+            }
+        }
+    }
+
 }

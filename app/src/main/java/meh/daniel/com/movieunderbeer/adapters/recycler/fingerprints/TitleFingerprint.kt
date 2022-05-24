@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapters.recycler.common.helpers
+package meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -39,7 +39,7 @@ class TitleViewHolder(
 ) : BaseViewHolder<ItemTitleBinding, FeedTitle>(binding) {
 
     override fun onBind(item: FeedTitle) {
-        binding.tvFeedTitle.text = item.title
+        binding.headerTitle.text = item.title
     }
 
 }
