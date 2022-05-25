@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapter
+package meh.daniel.com.movieunderbeer.adapter.brewerysprint
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,13 +8,13 @@ import com.bumptech.glide.Glide
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapter.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapter.common.Item
-import meh.daniel.com.movieunderbeer.adapter.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.ItemFilmBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 
-class FilmFingerprint(
+class FilmBrewerysprint(
     private val getInfoFilm: (Film) -> Unit
-) : ItemFingerprint<ItemFilmBinding, Film> {
+) : ItemBrewerysprint<ItemFilmBinding, Film> {
 
     override fun isRelativeItem(item: Item) = item is Film
 

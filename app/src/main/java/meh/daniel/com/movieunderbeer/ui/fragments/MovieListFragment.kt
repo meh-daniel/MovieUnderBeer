@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import meh.daniel.com.movieunderbeer.adapter.FingerprintAdapter
-import meh.daniel.com.movieunderbeer.adapter.FilmFingerprint
-import meh.daniel.com.movieunderbeer.adapter.GenreFingerprint
-import meh.daniel.com.movieunderbeer.adapter.HeaderFingerprint
+import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
+import meh.daniel.com.movieunderbeer.adapter.brewerysprint.FilmBrewerysprint
+import meh.daniel.com.movieunderbeer.adapter.brewerysprint.GenreBrewerysprint
+import meh.daniel.com.movieunderbeer.adapter.brewerysprint.HeaderBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
@@ -26,7 +26,7 @@ class MovieListFragment : BaseFragment(), MovieListView {
     lateinit var movieListPresenter: MovieListPresenter
 
     private lateinit var binding: FragmentMovieListBinding
-    private lateinit var adapter: FingerprintAdapter
+    private lateinit var adapter: MovieListAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -61,10 +61,10 @@ class MovieListFragment : BaseFragment(), MovieListView {
 
     override fun setupAdapter() {
         try {
-            adapter = FingerprintAdapter(listOf(
-                HeaderFingerprint(),
-                GenreFingerprint(::onListGenreClick),
-                FilmFingerprint(::onListFilmClick)
+            adapter = MovieListAdapter(listOf(
+                HeaderBrewerysprint(),
+                GenreBrewerysprint(::onListGenreClick),
+                FilmBrewerysprint(::onListFilmClick)
             ))
             with(binding.contentFilms) {
                 layoutManager = GridLayoutManager(context, 4)

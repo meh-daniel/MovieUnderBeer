@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapter
+package meh.daniel.com.movieunderbeer.adapter.brewerysprint
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapter.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapter.common.Item
-import meh.daniel.com.movieunderbeer.adapter.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.ItemTitleBinding
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 
-class HeaderFingerprint : ItemFingerprint<ItemTitleBinding, FeedHeader> {
+class HeaderBrewerysprint : ItemBrewerysprint<ItemTitleBinding, FeedHeader> {
 
     override fun isRelativeItem(item: Item) = item is FeedHeader
 
