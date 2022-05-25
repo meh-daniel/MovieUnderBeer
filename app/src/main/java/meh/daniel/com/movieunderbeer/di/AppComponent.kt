@@ -1,10 +1,7 @@
 package meh.daniel.com.movieunderbeer.di
 
 import dagger.Component
-import meh.daniel.com.movieunderbeer.di.modules.ApiModule
-import meh.daniel.com.movieunderbeer.di.modules.AppModule
-import meh.daniel.com.movieunderbeer.di.modules.CiceroneModule
-import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
+import meh.daniel.com.movieunderbeer.di.modules.*
 import meh.daniel.com.movieunderbeer.mvp.presenters.MainPresenter
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieInfoPresenter
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
@@ -21,7 +18,8 @@ import javax.inject.Singleton
             AppModule::class,
             CiceroneModule::class,
             ApiModule::class,
-            RepositoryModule::class
+            RepositoryModule::class,
+            AdapterModule::class
         ]
 )
 interface AppComponent {
