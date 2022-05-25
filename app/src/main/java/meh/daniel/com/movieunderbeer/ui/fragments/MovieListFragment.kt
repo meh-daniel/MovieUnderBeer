@@ -6,13 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import meh.daniel.com.movieunderbeer.adapters.recycler.FingerprintAdapter
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.FilmFingerprint
-import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.GenreFingerprint
-import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.HeaderFingerprint
+import meh.daniel.com.movieunderbeer.adapter.FingerprintAdapter
+import meh.daniel.com.movieunderbeer.adapter.FilmFingerprint
+import meh.daniel.com.movieunderbeer.adapter.GenreFingerprint
+import meh.daniel.com.movieunderbeer.adapter.HeaderFingerprint
+import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
@@ -20,7 +19,6 @@ import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
-import kotlin.contracts.contract
 
 class MovieListFragment : BaseFragment(), MovieListView {
 

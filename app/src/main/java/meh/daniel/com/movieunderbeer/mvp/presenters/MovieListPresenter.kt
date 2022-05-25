@@ -5,7 +5,7 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.di.modules.ApiModule

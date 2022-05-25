@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints
+package meh.daniel.com.movieunderbeer.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import meh.daniel.com.movieunderbeer.R
-import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
+import meh.daniel.com.movieunderbeer.adapter.base.BaseViewHolder
+import meh.daniel.com.movieunderbeer.adapter.common.Item
+import meh.daniel.com.movieunderbeer.adapter.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.databinding.ItemFilmBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 
