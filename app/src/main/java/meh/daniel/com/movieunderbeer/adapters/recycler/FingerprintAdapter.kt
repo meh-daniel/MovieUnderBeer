@@ -6,14 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewbinding.ViewBinding
-import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.ItemFingerprint
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.model.entities.films.Film
-import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
+import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 
 class FingerprintAdapter(
     private val fingerprints: List<ItemFingerprint<*, *>>,
@@ -53,7 +50,7 @@ class FingerprintAdapter(
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (currentList[position]) {
-                    is FeedTitle -> 4
+                    is FeedHeader -> 4
                     else -> 2
                 }
             }

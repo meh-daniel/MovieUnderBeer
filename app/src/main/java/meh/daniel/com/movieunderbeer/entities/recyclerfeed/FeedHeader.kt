@@ -1,7 +1,7 @@
-package meh.daniel.com.movieunderbeer.model.entities.helpers
+package meh.daniel.com.movieunderbeer.entities.recyclerfeed
 
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
 
-class FeedTitle (
+class FeedHeader (
         val title: String
         ) : Item

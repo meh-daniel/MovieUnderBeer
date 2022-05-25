@@ -1,38 +1,42 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ConcatAdapter
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapters.recycler.FingerprintAdapter
-import meh.daniel.com.movieunderbeer.adapters.recycler.animations.AddableItemAnimator
-import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SimpleCommonAnimator
-import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInLeftCommonAnimator
-import meh.daniel.com.movieunderbeer.adapters.recycler.animations.custom.SlideInTopCommonAnimator
 import meh.daniel.com.movieunderbeer.adapters.recycler.common.Item
-import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.FeedHorizontalDividerItemDecoration
-import meh.daniel.com.movieunderbeer.adapters.recycler.decorations.GroupVerticalItemDecoration
 import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.FilmFingerprint
-import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.TitleFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.GenreFingerprint
+import meh.daniel.com.movieunderbeer.adapters.recycler.fingerprints.HeaderFingerprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
-import meh.daniel.com.movieunderbeer.model.entities.helpers.FeedTitle
+import meh.daniel.com.movieunderbeer.entities.films.Film
+import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
+import kotlin.contracts.contract
 
 class MovieListFragment : BaseFragment(), MovieListView {
 
-    private lateinit var binding: FragmentMovieListBinding
-
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
+
+    private lateinit var binding: FragmentMovieListBinding
     private lateinit var adapter: FingerprintAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,25 +52,45 @@ class MovieListFragment : BaseFragment(), MovieListView {
         injectDependency()
         movieListPresenter.start()
     }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
     override fun injectDependency(){
         movieListPresenter.injectDependency()
     }
-    private fun getFingerprints() = listOf(
-        TitleFingerprint(),
-        FilmFingerprint()
-    )
-    override fun setData(dataList: MutableList<Item>) {
-        adapter = FingerprintAdapter(getFingerprints())
+
+    override fun setupAdapter() {
         try {
+            adapter = FingerprintAdapter(listOf(
+                HeaderFingerprint(),
+                GenreFingerprint(::onListGenreClick),
+                FilmFingerprint(::onListFilmClick)
+            ))
             with(binding.contentFilms) {
                 layoutManager = GridLayoutManager(context, 4)
                 adapter = this@MovieListFragment.adapter
             }
-            adapter.submitList( dataList )
         }catch (e : Exception){
             Log.d("expection:", "${e.toString()} fuck scope1")
         }
     }
+
+    override fun setData(genresListData: MutableList<Item>, filmsListData: MutableList<Item>) {
+        binding.contentFilms.postDelayed({
+            adapter.submitList(genresListData.toList() + filmsListData.toList())
+        }, 200)
+    }
+
+    private fun onListFilmClick(film: Film)  {
+        Log.d("xxx:", "${film.toString()} fuck scope1")
+    }
+
+    private fun onListGenreClick(genre: FeedGenre)  {
+        Log.d("xxx:", "${genre.title} fuck scope1")
+    }
+
 }
 
 
