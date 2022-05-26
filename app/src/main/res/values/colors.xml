@@ -7,8 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="green">#44FF00</color>
     <color name="gray">#838383</color>
     <color name="red">#FF0000</color>
+
+    <!--    цвета для светлой темы-->
+
+    <!--    Цвета основных первичных компонентов-->
+    <color name="primary">#fdd835</color>
+    <color name="primary_light">#ffff6b</color>
+    <color name="primary_dark">#c6a700</color>
+    <!--    Цвета основных первичных компонентов-->
+    <color name="secondary">#ffa000</color>
+    <color name="secondary_light">#ffd149</color>
+    <color name="secondary_dark">#c6a700</color>
+<!--    цвета для текста-->
+
 </resources>

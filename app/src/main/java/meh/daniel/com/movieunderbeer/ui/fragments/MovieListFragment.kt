@@ -2,10 +2,14 @@ package meh.daniel.com.movieunderbeer.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Parcel
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
@@ -70,8 +74,11 @@ class MovieListFragment : BaseFragment(), MovieListView {
         }, 200)
     }
 
+    override fun openInfoFilm() {
+    }
+
     private fun onListFilmClick(film: Film)  {
-        Log.d("xxx:", "${film.toString()} fuck scope1")
+        film.id?.let { movieListPresenter.openFilm() }
     }
 
     private fun onListGenreClick(genre: FeedGenre)  {
