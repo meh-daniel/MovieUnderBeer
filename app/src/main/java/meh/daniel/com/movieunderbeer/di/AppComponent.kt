@@ -2,7 +2,7 @@ package meh.daniel.com.movieunderbeer.di
 
 import dagger.Component
 import meh.daniel.com.movieunderbeer.di.modules.*
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieInfoPresenter
+import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.ui.AppActivity
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
@@ -24,7 +24,7 @@ interface AppComponent {
 
     fun inject(appActivity: AppActivity)
 
-    fun inject(movieInfoPresenter: MovieInfoPresenter)
+    fun inject(movieDetailsPresenter: MovieDetailsPresenter)
     fun inject(movieInfoPresenter: MovieDetailsFragment)
 
     fun inject(movieListPresenter: MovieListPresenter)

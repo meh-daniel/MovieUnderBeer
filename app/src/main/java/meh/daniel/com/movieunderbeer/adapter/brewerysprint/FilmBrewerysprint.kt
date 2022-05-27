@@ -49,17 +49,17 @@ class FilmViewHolder(
         when {
             item.imageUrl.isNullOrEmpty() -> {
                 Glide.with(filmBackgroundImage)
-                    .load(R.drawable.img_1)
-                    .into(filmBackgroundImage)
-            }
-            item.imageUrl != null -> {
-                Glide.with(filmBackgroundImage)
-                    .load(item.imageUrl)
+                    .load(R.drawable.not_found_image)
                     .into(filmBackgroundImage)
             }
             item.imageUrl == "null"-> {
                 Glide.with(filmBackgroundImage)
-                    .load(R.drawable.img_1)
+                    .load(R.drawable.not_found_image)
+                    .into(filmBackgroundImage)
+            }
+            else -> {
+                Glide.with(filmBackgroundImage)
+                    .load(item.imageUrl)
                     .into(filmBackgroundImage)
             }
         }

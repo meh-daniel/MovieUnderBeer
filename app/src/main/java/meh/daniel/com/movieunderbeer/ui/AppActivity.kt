@@ -27,7 +27,7 @@ class AppActivity : MvpAppCompatActivity() {
         super.onCreate(savedInstanceState)
         injectDependency()
         vb = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(vb?.root)
+        setContentView(vb.root)
         if (savedInstanceState == null){
             navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))
         }

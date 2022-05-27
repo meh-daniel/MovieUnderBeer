@@ -7,7 +7,9 @@ import meh.daniel.com.movieunderbeer.ui.fragments.MovieDetailsFragment
 import meh.daniel.com.movieunderbeer.ui.fragments.MovieListFragment
 
 class AppScreens : IScreens {
+
     override fun homeScreen(): Screen = FragmentScreen{ MovieListFragment()}
 
     override fun openFilm(): Screen = FragmentScreen {MovieDetailsFragment()}
+
 }

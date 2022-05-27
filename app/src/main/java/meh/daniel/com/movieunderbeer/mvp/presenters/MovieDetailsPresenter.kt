@@ -2,11 +2,11 @@ package meh.daniel.com.movieunderbeer.mvp.presenters
 
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
-import meh.daniel.com.movieunderbeer.mvp.view.MovieInfoView
+import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
 import moxy.InjectViewState
 
 @InjectViewState
-class MovieInfoPresenter : BasePresenter<MovieInfoView>() {
+class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
     fun backClicked() {
         router.exit()

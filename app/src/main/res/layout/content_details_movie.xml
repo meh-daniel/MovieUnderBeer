@@ -13,10 +13,10 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/film_poster"
+        android:id="@+id/film_container_poster"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
@@ -26,29 +26,28 @@
         app:layout_constraintDimensionRatio="w,2:3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
-
         <ImageView
-            android:id="@+id/image_poster"
+            android:id="@+id/film_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
-
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/film_localized_name"
+        android:id="@+id/film_title_localized_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/film_poster"
+        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="Movie title here" />
+        tools:text="Movie localized name"/>
 
     <TextView
-        android:id="@+id/film_name"
+        android:id="@+id/film_title_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -56,9 +55,9 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/film_poster"
-        app:layout_constraintTop_toBottomOf="@+id/film_localized_name"
-        tools:text="Movie title here" />
+        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
+        app:layout_constraintTop_toBottomOf="@+id/film_title_localized_name"
+        tools:text="Movie title here"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/film_group_genre"
@@ -70,10 +69,8 @@
         android:descendantFocusability="blocksDescendants"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/film_poster"
-        app:layout_constraintTop_toBottomOf="@+id/film_name">
-
-    </com.google.android.material.chip.ChipGroup>
+        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
+        app:layout_constraintTop_toBottomOf="@+id/film_title_name"/>
 
     <View
         android:id="@+id/view_divider_first"
@@ -83,7 +80,7 @@
         android:background="@color/light_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/film_group_genre" />
+        app:layout_constraintTop_toBottomOf="@+id/film_group_genre"/>
 
     <TextView
         android:id="@+id/film_rating"
@@ -95,7 +92,7 @@
         app:layout_constraintEnd_toStartOf="@+id/view_divider_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_first"
-        android:text="7.7"/>
+        tools:text="7.666"/>
 
     <TextView
         android:id="@+id/label_release_date"
@@ -106,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="@+id/film_rating"
         app:layout_constraintStart_toStartOf="@+id/film_rating"
         app:layout_constraintTop_toBottomOf="@+id/film_rating"
-        android:text="rating"/>
+        android:text="@string/rating"/>
 
     <View
         android:id="@+id/view_divider_vertical"
@@ -130,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view_divider_vertical"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_first"
-        android:text="1998"/>
+        tools:text="1998"/>
 
 
     <TextView
@@ -142,7 +139,7 @@
         app:layout_constraintEnd_toEndOf="@+id/film_year"
         app:layout_constraintStart_toStartOf="@+id/film_year"
         app:layout_constraintTop_toBottomOf="@+id/film_year"
-        android:text="Release date"/>
+        android:text="@string/release_date"/>
 
     <View
         android:id="@+id/view_divider_second"
@@ -153,7 +150,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view_divider_first" />
+        app:layout_constraintTop_toTopOf="@+id/view_divider_first"/>
 
     <TextView
         android:id="@+id/label_overview"
@@ -161,9 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Overview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_divider_second" />
+        app:layout_constraintTop_toBottomOf="@+id/view_divider_second"
+        tools:text="Overview"/>
 
     <TextView
         android:id="@+id/text_overview"
@@ -175,6 +172,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_overview"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

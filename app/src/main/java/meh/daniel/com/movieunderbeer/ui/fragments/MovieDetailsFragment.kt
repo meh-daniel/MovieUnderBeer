@@ -4,19 +4,16 @@ import android.os.Bundle
  import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.google.android.material.chip.Chip
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
-import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieInfoPresenter
-import meh.daniel.com.movieunderbeer.mvp.view.MovieInfoView
+import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
+import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
-class MovieDetailsFragment : BaseFragment(), MovieInfoView {
+class MovieDetailsFragment : BaseFragment(), MovieDetailsView {
 
     @InjectPresenter
-    lateinit var movieInfoPresenter: MovieInfoPresenter
+    lateinit var movieDetailsPresenter: MovieDetailsPresenter
 
     private lateinit var binding: FragmentMovieDetailsBinding
 
@@ -32,61 +29,10 @@ class MovieDetailsFragment : BaseFragment(), MovieInfoView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
-        binding.toolbar.title = "MyApplication666"
-        var film = Film(id = 42664, localizedName = "Бойцовский клуб", name = "Fight Club",
-            year = 1999, rating = 8.656, imageUrl =  "https://st.kp.yandex.net/images/film_iphone/iphone360_361.jpg",
-            description = "Терзаемый хронической бессонницей и отчаянно пытающийся вырваться из мучительно скучной жизни, клерк встречает некоего Тайлера Дардена," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " ради чего стоит жить. Пройдет немного времени, и вот уже главные герои лупят друг друга почем зря на стоянке перед баром, и очищающий мордобой " +
-                    "доставляет им высшее блаженство. Приобщая других мужчин к простым радостям физической жестокости, они основывают тайный Бойцовский Клуб, который имеет" +
-                    " огромный успех. Но в концовке фильма всех ждет шокирующее открытие, которое может привести к непредсказуемым событиям…",
-            genres = listOf("триллер", "драма", "криминал") )
-
-        Glide.with(binding.imageMovieBackdrop)
-            .load(film.imageUrl)
-            .into(binding.imageMovieBackdrop)
-
-        Glide.with(binding.imagePoster)
-            .load(film.imageUrl)
-            .into(binding.imagePoster)
-
-        binding.filmLocalizedName.text = film.localizedName
-        binding.filmName.text = film.name
-        binding.textOverview.text = film.description
-        binding.filmYear.text = film.year.toString()
-        binding.filmRating.text = film.rating.toString()
-        var chip: Chip = Chip(binding.filmGroupGenre.context)
-        var chip2: Chip = Chip(binding.filmGroupGenre.context)
-        var chip3: Chip = Chip(binding.filmGroupGenre.context)
-        chip.setText("триллер")
-        chip.isCheckable = false
-        chip.isClickable = false
-        binding.filmGroupGenre.addView(chip)
-
-        chip2.setText("драма")
-        chip2.isCheckable = false
-        chip2.isClickable = false
-        binding.filmGroupGenre.addView(chip2)
-
-        chip3.setText("криминал")
-        chip3.isCheckable = false
-        chip3.isClickable = false
-        binding.filmGroupGenre.addView(chip3)
-
-
-
     }
 
     override fun injectDependency() {
-        movieInfoPresenter.injectDependency()
+        movieDetailsPresenter.injectDependency()
     }
 
     companion object{

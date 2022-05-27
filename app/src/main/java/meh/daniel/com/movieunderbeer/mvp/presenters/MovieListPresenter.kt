@@ -1,8 +1,6 @@
 package meh.daniel.com.movieunderbeer.mvp.presenters
 
 import android.net.Uri
-import com.github.terrakok.cicerone.Command
-import com.github.terrakok.cicerone.Replace
 import kotlinx.coroutines.*
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.app.App
@@ -15,7 +13,6 @@ import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
-import meh.daniel.com.movieunderbeer.ui.navigation.AppScreens
 import moxy.InjectViewState
 import retrofit2.Response
 
@@ -28,16 +25,16 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
         val repo = RepositoryModule().filmRepository(api)
-        val response: Response<FilmData> = with(Dispatchers.Default){
+        val response: Response<FilmData> = (Dispatchers.Default){
             repo.loadFilms()
         }
 
         viewState.setupAdapter()
 
-        var listGenre: MutableList<Item> = with(Dispatchers.Default){
+        val listGenre: MutableList<Item> = (Dispatchers.Default){
             getListGenre(response)
         }
-        var listFilm: MutableList<Item> = with(Dispatchers.Default){
+        val listFilm: MutableList<Item> = (Dispatchers.Default){
             getListFilms(response)
         }
 
@@ -51,8 +48,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         router.navigateTo(screens.openFilm())
     }
 
-    private suspend  fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
-        var listFilm = mutableListOf<Item>(
+    private fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
+        val listFilm = mutableListOf<Item>(
             FeedHeader("Фильмы")
         )
 
@@ -61,18 +58,18 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
             if (items != null) {
                 for (i in 0 until items.count()) {
-                    var id = items[i].id?.toInt()
-                    var localName = items[i].localizedName
-                    var name = items[i].name
-                    var year = items[i].year
-                    var rating = items[i].rating?.toDouble()
-                    var imageUrl = if(items[i].imageUrl != null){
+                    val id = items[i].id
+                    val localName = items[i].localizedName
+                    val name = items[i].name
+                    val year = items[i].year
+                    val rating = items[i].rating
+                    val imageUrl = if(items[i].imageUrl != null){
                         "https://st.kp.yandex.net/images/film_iphone/" + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
                     }else{
                         null
                     }
-                    var description = items[i].description
-                    var genres = items[i].genres
+                    val description = items[i].description
+                    val genres = items[i].genres
 
                     listFilm.add(Film(id = id, localizedName = localName, name = name,
                         year = year, rating = rating, imageUrl =  imageUrl, description = description, genres = genres))
@@ -83,8 +80,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         return listFilm
     }
 
-    private suspend fun getListFilms(response: Response<FilmData>, genreFilter: FeedGenre) : MutableList<Item>{
-        var listFilm = mutableListOf<Item>(
+    private fun getListFilms(response: Response<FilmData>, genreFilter: FeedGenre) : MutableList<Item>{
+        val listFilm = mutableListOf<Item>(
             FeedHeader("Фильмы")
         )
 
@@ -93,18 +90,18 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
             if (items != null) {
                 for (i in 0 until items.count()) {
-                    var id = items[i].id?.toInt()
-                    var localName = items[i].localizedName
-                    var name = items[i].name
-                    var year = items[i].year
-                    var rating = items[i].rating?.toDouble()
-                    var imageUrl = if(items[i].imageUrl != null){
+                    val id = items[i].id
+                    val localName = items[i].localizedName
+                    val name = items[i].name
+                    val year = items[i].year
+                    val rating = items[i].rating
+                    val imageUrl = if(items[i].imageUrl != null){
                         "https://st.kp.yandex.net/images/film_iphone/" + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
                     }else{
                         null
                     }
-                    var description = items[i].description
-                    var genres = items[i].genres
+                    val description = items[i].description
+                    val genres = items[i].genres
 
                     if (genres!!.contains(genreFilter.title)){
                         listFilm.add(Film(id = id, localizedName = localName, name = name,
@@ -118,8 +115,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         return listFilm
     }
 
-    private suspend  fun getListGenre(response: Response<FilmData>) : MutableList<Item>{
-        var listGenre = mutableListOf<Item>(
+    private fun getListGenre(response: Response<FilmData>) : MutableList<Item>{
+        val listGenre = mutableListOf<Item>(
             FeedHeader("Жанры")
         )
 
@@ -128,13 +125,12 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
             if (items != null) {
                 for (i in 0 until items.count()) {
-                    var genres = items[i].genres
+                    val genres = items[i].genres
 
                     if (genres != null) {
-                        for (i in 0 until genres.size){
-                            var title = genres.get(i)
-                            if (listGenre.none{ listGenre.contains(FeedGenre(title)) }) {
-                                listGenre.add(FeedGenre(title = title))
+                        for (element in genres){
+                            if (listGenre.none{ listGenre.contains(FeedGenre(element)) }) {
+                                listGenre.add(FeedGenre(title = element))
                             }
                         }
                     }
