@@ -6,7 +6,7 @@ import meh.daniel.com.movieunderbeer.mvp.presenters.MovieInfoPresenter
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.ui.AppActivity
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
-import meh.daniel.com.movieunderbeer.ui.fragments.MovieInfoFragment
+import meh.daniel.com.movieunderbeer.ui.fragments.MovieDetailsFragment
 import meh.daniel.com.movieunderbeer.ui.fragments.MovieListFragment
 import javax.inject.Singleton
 
@@ -25,7 +25,7 @@ interface AppComponent {
     fun inject(appActivity: AppActivity)
 
     fun inject(movieInfoPresenter: MovieInfoPresenter)
-    fun inject(movieInfoPresenter: MovieInfoFragment)
+    fun inject(movieInfoPresenter: MovieDetailsFragment)
 
     fun inject(movieListPresenter: MovieListPresenter)
     fun inject(movieListPresenter: MovieListFragment)
