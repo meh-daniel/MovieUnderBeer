@@ -8,10 +8,6 @@ import moxy.InjectViewState
 @InjectViewState
 class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
-    fun backClicked() {
-        router.exit()
-    }
-
     override fun injectDependency() {
         App.instance.appComponent.inject(this)
     }

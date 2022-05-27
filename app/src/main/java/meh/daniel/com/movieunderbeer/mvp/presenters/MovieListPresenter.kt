@@ -18,9 +18,7 @@ import retrofit2.Response
 
 @InjectViewState
 class MovieListPresenter : BasePresenter<MovieListView>() {
-    override fun injectDependency() {
-        App.instance.appComponent.inject(this)
-    }
+
     fun start() : Unit = runBlocking {
 
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
@@ -48,6 +46,29 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         router.navigateTo(screens.openFilm())
     }
 
+
+
+    fun getMovieByGenre(genre: FeedGenre) : Unit = runBlocking {
+
+        val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
+        val repo = RepositoryModule().filmRepository(api)
+        val response: Response<FilmData> = (Dispatchers.Default){
+            repo.loadFilms()
+        }
+
+        val listGenre: MutableList<Item> = (Dispatchers.Default){
+            getListGenre(response)
+        }
+        val listFilm: MutableList<Item> = (Dispatchers.Default){
+            getListFilms(response, genre)
+        }
+
+        listGenre.addAll(listFilm)
+
+        viewState.setData(listGenre)
+
+    }
+
     private fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
         val listFilm = mutableListOf<Item>(
             FeedHeader("Фильмы")
@@ -64,7 +85,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                     val year = items[i].year
                     val rating = items[i].rating
                     val imageUrl = if(items[i].imageUrl != null){
-                        "https://st.kp.yandex.net/images/film_iphone/" + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
+                        Constants.API_BASE_URL_IMAGES_PHONE + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
                     }else{
                         null
                     }
@@ -96,7 +117,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                     val year = items[i].year
                     val rating = items[i].rating
                     val imageUrl = if(items[i].imageUrl != null){
-                        "https://st.kp.yandex.net/images/film_iphone/" + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
+                        Constants.API_BASE_URL_IMAGES_PHONE + Uri.parse((items[i].imageUrl)).lastPathSegment.toString()
                     }else{
                         null
                     }
@@ -140,6 +161,10 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         }
 
         return listGenre
+    }
+
+    override fun injectDependency() {
+        App.instance.appComponent.inject(this)
     }
 
 }

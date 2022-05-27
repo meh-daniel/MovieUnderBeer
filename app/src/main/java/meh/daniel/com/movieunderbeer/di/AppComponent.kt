@@ -20,8 +20,6 @@ import javax.inject.Singleton
         ]
 )
 interface AppComponent {
-    fun inject(baseFragment: BaseFragment?)
-
     fun inject(appActivity: AppActivity)
 
     fun inject(movieDetailsPresenter: MovieDetailsPresenter)

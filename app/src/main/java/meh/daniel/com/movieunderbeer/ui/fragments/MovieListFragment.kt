@@ -1,15 +1,9 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Parcel
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
@@ -20,32 +14,20 @@ import meh.daniel.com.movieunderbeer.adapter.brewerysprint.HeaderBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
-import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
-class MovieListFragment : BaseFragment(), MovieListView {
+class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListView {
 
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
-
-    private lateinit var binding: FragmentMovieListBinding
     private var adapter: BrewerysprintAdapter = MovieListAdapter(listOf(
     HeaderBrewerysprint(),
     GenreBrewerysprint(::onListGenreClick),
     FilmBrewerysprint(::onListFilmClick)
     ))
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentMovieListBinding.inflate(inflater, container, false)
-        injectDependency()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,14 +39,13 @@ class MovieListFragment : BaseFragment(), MovieListView {
         movieListPresenter.injectDependency()
     }
 
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentMovieListBinding.inflate(inflater, container, false)
+
     override fun setupAdapter() {
-        try {
-            with(binding.contentFilms) {
-                layoutManager = GridLayoutManager(context, 4)
-                adapter = this@MovieListFragment.adapter
-            }
-        }catch (e : Exception){
-            Log.d("expection:", "${e.toString()} fuck scope1")
+        with(binding.contentFilms) {
+            layoutManager = GridLayoutManager(context, 4)
+            adapter = this@MovieListFragment.adapter
         }
     }
 
@@ -74,16 +55,14 @@ class MovieListFragment : BaseFragment(), MovieListView {
         }, 200)
     }
 
-    override fun openInfoFilm() {
-    }
-
-    private fun onListFilmClick(film: Film)  {
+    override fun onListFilmClick(film: Film)  {
         film.id?.let { movieListPresenter.openFilm() }
     }
 
-    private fun onListGenreClick(genre: FeedGenre)  {
-        Log.d("xxx:", "${genre.title} fuck scope1")
+    override fun onListGenreClick(genre: FeedGenre)  {
+        movieListPresenter.getMovieByGenre(genre)
     }
+
 
 }
 
