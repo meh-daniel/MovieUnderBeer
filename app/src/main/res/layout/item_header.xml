@@ -5,11 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <TextView
-        style="@style/regularText"
         android:id="@+id/header_title"
+        style="@style/item_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#591976D2"
-        android:textAlignment="center"
-        android:textStyle="italic"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

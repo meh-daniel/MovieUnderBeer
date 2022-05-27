@@ -15,7 +15,7 @@ class HeaderBrewerysprint : ItemBrewerysprint<ItemHeaderBinding, FeedHeader> {
 
     override fun isRelativeItem(item: Item) = item is FeedHeader
 
-    override fun getLayoutId() = R.layout.item_title
+    override fun getLayoutId() = R.layout.item_header
 
     override fun getViewHolder(
         layoutInflater: LayoutInflater,

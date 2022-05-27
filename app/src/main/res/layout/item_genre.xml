@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/genre_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/genre_view"
+    <Button
+        android:id="@+id/genre_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        card_view:cardCornerRadius="15dp">
-
-        <Button
-            android:id="@+id/genre_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#591976D2"
-            android:textAlignment="center"
-            android:textStyle="italic"/>
-    </androidx.cardview.widget.CardView>
+        android:textAlignment="center"
+        android:layout_margin="@dimen/marginDefaultLayout"/>
 
 </LinearLayout>

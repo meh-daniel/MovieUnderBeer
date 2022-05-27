@@ -11,7 +11,7 @@
         android:id="@+id/film_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/marginDefaultLayout"
         card_view:cardBackgroundColor="@color/cardview_shadow_end_color"
         card_view:cardCornerRadius="15dp">
 
