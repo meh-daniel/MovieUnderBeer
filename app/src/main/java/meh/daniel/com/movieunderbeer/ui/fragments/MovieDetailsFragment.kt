@@ -1,11 +1,9 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
  import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
