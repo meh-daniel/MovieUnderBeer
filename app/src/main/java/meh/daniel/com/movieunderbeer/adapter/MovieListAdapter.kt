@@ -1,9 +1,11 @@
 package meh.daniel.com.movieunderbeer.adapter
 
+import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
+import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 
 class MovieListAdapter(
@@ -25,5 +27,21 @@ class MovieListAdapter(
             }
         }
     }
+
+    private inline fun <reified T> handleItemSelection(oldValue: Int, newValue: Int) {
+        if (oldValue != RecyclerView.NO_POSITION) {
+            setSelectedItem<T>(oldValue, isSelected = false)
+        }
+        setSelectedItem<T>(newValue, isSelected = true)
+    }
+
+    private inline fun <reified T> setSelectedItem(position: Int, isSelected: Boolean) {
+        when (T::class) {
+            FeedGenre::class -> (currentList[position]).isSelected = isSelected
+            else -> throw Exception("$LOG_TAG Unknown class type exception")
+        }
+        notifyItemChanged(position, ITEM_SELECTION_PAYLOAD)
+    }
+
 
 }

@@ -13,7 +13,6 @@
         android:id="@+id/film_background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         android:scaleType="centerCrop"
         tools:ignore="ContentDescription"
         tools:src="@android:mipmap/sym_def_app_icon" />
@@ -29,14 +28,15 @@
             android:id="@+id/film_title_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:paddingVertical="8dp"
+
             android:ellipsize="end"
             android:maxLines="2"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            tools:text="Film title name"/>
+            tools:text="Film title name"
+
+            style="@style/text_caption"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

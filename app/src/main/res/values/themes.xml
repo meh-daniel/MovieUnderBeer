@@ -2,24 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.MovieUnderBeer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_primary</item>
-        <item name="colorPrimaryVariant">@color/light_primary_dark</item>
-        <item name="colorOnPrimary">@color/light_primary_light</item>
+        <item name="colorPrimary">@color/yellow_700</item>
+        <item name="colorPrimaryVariant">@color/yellow_700_dark</item>
+        <item name="colorOnPrimary">@color/yellow_700_light</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/light_secondary</item>
-        <item name="colorSecondaryVariant">@color/light_secondary_light</item>
-        <item name="colorOnSecondary">@color/light_secondary_dark</item>
+        <item name="colorSecondary">@color/yellow_100_A</item>
+        <item name="colorSecondaryVariant">@color/yellow_100_A_dark</item>
+        <item name="colorOnSecondary">@color/yellow_100_A_light</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <!--Toolbar-->
-    <style name="AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-    </style>
-    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
-
-
 </resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
@@ -9,13 +8,13 @@
     <!--    цвета для светлой темы-->
 
     <!--    Цвета основных первичных компонентов-->
-    <color name="light_primary">#fdd835</color>
-    <color name="light_primary_light">#ffff6b</color>
-    <color name="light_primary_dark">#c6a700</color>
+    <color name="yellow_700">#fbc02d</color>
+    <color name="yellow_700_dark">#c49000</color>
+    <color name="yellow_700_light">#fff263</color>
     <!--    Цвета основных первичных компонентов-->
-    <color name="light_secondary">#ffa000</color>
-    <color name="light_secondary_light">#ffd149</color>
-    <color name="light_secondary_dark">#c6a700</color>
+    <color name="yellow_100_A">#ffa000</color>
+    <color name="yellow_100_A_dark">#c6a700</color>
+    <color name="yellow_100_A_light">#ffd149</color>
 
 
     <!--    цвета для тёмной темы-->
