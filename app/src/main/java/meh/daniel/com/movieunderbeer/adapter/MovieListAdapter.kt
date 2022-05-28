@@ -27,21 +27,4 @@ class MovieListAdapter(
             }
         }
     }
-
-    private inline fun <reified T> handleItemSelection(oldValue: Int, newValue: Int) {
-        if (oldValue != RecyclerView.NO_POSITION) {
-            setSelectedItem<T>(oldValue, isSelected = false)
-        }
-        setSelectedItem<T>(newValue, isSelected = true)
-    }
-
-    private inline fun <reified T> setSelectedItem(position: Int, isSelected: Boolean) {
-        when (T::class) {
-            FeedGenre::class -> (currentList[position]).isSelected = isSelected
-            else -> throw Exception("$LOG_TAG Unknown class type exception")
-        }
-        notifyItemChanged(position, ITEM_SELECTION_PAYLOAD)
-    }
-
-
 }
