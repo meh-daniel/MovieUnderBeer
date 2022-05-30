@@ -8,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -31,18 +32,11 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     GenreBrewerysprint(::onListGenreClick),
     FilmBrewerysprint(::onListFilmClick)
     ))
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
         movieListPresenter.start()
         val result = "result"
-        setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-
-        setFragmentResultListener("request_key") { key, bundle ->
-            val selectedSort = bundle.getParcelable<Film>("extra_key")
-            // применение полученной сортировки
-        }
     }
 
     override fun injectDependency(){

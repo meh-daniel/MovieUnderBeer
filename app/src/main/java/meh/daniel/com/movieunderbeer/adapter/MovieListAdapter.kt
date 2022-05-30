@@ -1,6 +1,7 @@
 package meh.daniel.com.movieunderbeer.adapter
 
 import androidx.core.content.PackageManagerCompat.LOG_TAG
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
@@ -11,10 +12,6 @@ import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 class MovieListAdapter(
     fingerprints: List<ItemBrewerysprint<*, *>>
 ) : BrewerysprintAdapter(fingerprints) {
-
-    init {
-        setHasStableIds(true)
-    }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)

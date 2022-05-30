@@ -7,6 +7,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter

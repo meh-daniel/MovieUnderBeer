@@ -1,7 +1,9 @@
 package meh.daniel.com.movieunderbeer.adapter.base
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -23,6 +25,18 @@ abstract class BrewerysprintAdapter(
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
         holder.onBind (currentList[position])
+    }
+
+    override fun onBindViewHolder(
+        holder: BaseViewHolder<ViewBinding, Item>,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isNullOrEmpty()) {
+            super.onBindViewHolder(holder, position, payloads)
+        } else {
+            holder.onBind(currentList[position], payloads)
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
