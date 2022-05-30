@@ -10,6 +10,7 @@ import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.films.FilmData
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
+import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenreGroup
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 import meh.daniel.com.movieunderbeer.mvp.base.BasePresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
@@ -29,16 +30,23 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
         viewState.setupAdapter()
 
+        val listHeaderGenre: MutableList<Item> = (Dispatchers.Default){
+            getHeader("Жанры")
+        }
         val listGenre: MutableList<Item> = (Dispatchers.Default){
-            getListGenre(response)
+            getListGenreGroup(response)
+        }
+        val listHeaderFilm: MutableList<Item> = (Dispatchers.Default){
+            getHeader("Фильмы")
         }
         val listFilm: MutableList<Item> = (Dispatchers.Default){
             getListFilms(response)
         }
+        listHeaderGenre.addAll(listGenre)
+        listHeaderGenre.addAll(listHeaderFilm)
+        listHeaderGenre.addAll(listFilm)
 
-        listGenre.addAll(listFilm)
-
-        viewState.setData(listGenre)
+        viewState.setData(listHeaderGenre)
 
     }
 
@@ -46,7 +54,11 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         router.navigateTo(screens.openFilm())
     }
 
-
+    private fun getHeader(header: String): MutableList<Item>{
+        return mutableListOf<Item>(
+            FeedHeader(header)
+        )
+    }
 
     fun getMovieByGenre(genre: FeedGenre) : Unit = runBlocking {
 
@@ -56,23 +68,28 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             repo.loadFilms()
         }
 
+        val listHeaderGenre: MutableList<Item> = (Dispatchers.Default){
+            getHeader("Жанры")
+        }
         val listGenre: MutableList<Item> = (Dispatchers.Default){
-            getListGenre(response)
+            getListGenreGroup(response)
+        }
+        val listHeaderFilm: MutableList<Item> = (Dispatchers.Default){
+            getHeader("Фильмы")
         }
         val listFilm: MutableList<Item> = (Dispatchers.Default){
             getListFilms(response, genre)
         }
+        listHeaderGenre.addAll(listGenre)
+        listHeaderGenre.addAll(listHeaderFilm)
+        listHeaderGenre.addAll(listFilm)
 
-        listGenre.addAll(listFilm)
-
-        viewState.setData(listGenre)
+        viewState.setData(listHeaderGenre)
 
     }
 
     private fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
-        val listFilm = mutableListOf<Item>(
-            FeedHeader("Фильмы")
-        )
+        val listFilm = mutableListOf<Item>()
 
         if (response.isSuccessful) {
             val items = response.body()?.films
@@ -102,9 +119,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
     }
 
     private fun getListFilms(response: Response<FilmData>, genreFilter: FeedGenre) : MutableList<Item>{
-        val listFilm = mutableListOf<Item>(
-            FeedHeader("Фильмы")
-        )
+        val listFilm = mutableListOf<Item>()
 
         if (response.isSuccessful) {
             val items = response.body()?.films
@@ -136,10 +151,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         return listFilm
     }
 
-    private fun getListGenre(response: Response<FilmData>) : MutableList<Item>{
-        val listGenre = mutableListOf<Item>(
-            FeedHeader("Жанры")
-        )
+    private fun getListGenreGroup(response: Response<FilmData>): MutableList<Item> {
+        val listGenre = mutableListOf<FeedGenre>()
 
         if (response.isSuccessful) {
             val items = response.body()?.films
@@ -149,8 +162,8 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
                     val genres = items[i].genres
 
                     if (genres != null) {
-                        for (element in genres){
-                            if (listGenre.none{ listGenre.contains(FeedGenre(element)) }) {
+                        for (element in genres) {
+                            if (listGenre.none { listGenre.contains(FeedGenre(element)) }) {
                                 listGenre.add(FeedGenre(title = element))
                             }
                         }
@@ -160,7 +173,9 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             }
         }
 
-        return listGenre
+        return mutableListOf(
+            FeedGenreGroup(listGenre)
+        )
     }
 
     override fun injectDependency() {

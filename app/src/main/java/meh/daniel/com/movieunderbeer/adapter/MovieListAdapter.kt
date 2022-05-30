@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
+import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
+import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenreGroup
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 
 class MovieListAdapter(
@@ -23,6 +25,8 @@ class MovieListAdapter(
             override fun getSpanSize(position: Int): Int {
                 return when (currentList[position]) {
                     is FeedHeader -> 4
+                    is FeedGenreGroup -> 4
+                    is Film -> 2
                     else -> 2
                 }
             }

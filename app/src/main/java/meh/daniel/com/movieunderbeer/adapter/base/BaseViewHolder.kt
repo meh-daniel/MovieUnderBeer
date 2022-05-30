@@ -14,8 +14,4 @@ abstract class BaseViewHolder<out V : ViewBinding, I : Item>(
         this.item = item
     }
 
-    open fun onBind(item: I, payloads: List<Any>) {
-        this.item = item
-    }
-
 }

@@ -24,19 +24,7 @@ abstract class BrewerysprintAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
-        holder.onBind (currentList[position])
-    }
-
-    override fun onBindViewHolder(
-        holder: BaseViewHolder<ViewBinding, Item>,
-        position: Int,
-        payloads: MutableList<Any>
-    ) {
-        if (payloads.isNullOrEmpty()) {
-            super.onBindViewHolder(holder, position, payloads)
-        } else {
-            holder.onBind(currentList[position], payloads)
-        }
+        holder.onBind(currentList[position])
     }
 
     override fun getItemViewType(position: Int): Int {

@@ -4,16 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.adapter.brewerysprint.FilmBrewerysprint
-import meh.daniel.com.movieunderbeer.adapter.brewerysprint.GenreBrewerysprint
+import meh.daniel.com.movieunderbeer.adapter.brewerysprint.GenreGroupBrewerysprint
 import meh.daniel.com.movieunderbeer.adapter.brewerysprint.HeaderBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
@@ -28,23 +24,23 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
     private var adapter: BrewerysprintAdapter = MovieListAdapter(listOf(
-    HeaderBrewerysprint(),
-    GenreBrewerysprint(::onListGenreClick),
-    FilmBrewerysprint(::onListFilmClick)
+        HeaderBrewerysprint(),
+        GenreGroupBrewerysprint(::onListGenreClick),
+        FilmBrewerysprint(::onListFilmClick)
     ))
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        injectDependency()
-        movieListPresenter.start()
-        val result = "result"
-    }
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentMovieListBinding.inflate(inflater, container, false)
 
     override fun injectDependency(){
         movieListPresenter.injectDependency()
     }
 
-    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        FragmentMovieListBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        injectDependency()
+        movieListPresenter.start()
+    }
 
     override fun setupAdapter() {
         with(binding.contentFilms) {
