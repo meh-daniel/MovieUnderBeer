@@ -11,4 +11,8 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
     override fun injectDependency() {
         App.instance.appComponent.inject(this)
     }
+
+    fun backExit(){
+        router.exit()
+    }
 }

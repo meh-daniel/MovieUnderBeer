@@ -12,6 +12,10 @@ class MovieListAdapter(
     fingerprints: List<ItemBrewerysprint<*, *>>
 ) : BrewerysprintAdapter(fingerprints) {
 
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         (recyclerView.layoutManager as GridLayoutManager).spanSizeLookup = getSpanSizeLookup()

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
+<com.google.android.material.appbar.MaterialToolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/heightToolbarMaterialDesign"
+    app:layout_collapseMode="pin"
     android:theme="@style/AppBarOverlay"
-    app:popupTheme="@style/PopupOverlay" />
+    app:popupTheme="@style/PopupOverlay">
+    <ImageButton
+        android:id="@+id/toolbar_navigation_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:background="#00000000"/>
+</com.google.android.material.appbar.MaterialToolbar>

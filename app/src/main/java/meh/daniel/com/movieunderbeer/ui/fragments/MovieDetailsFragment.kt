@@ -1,19 +1,19 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
+import android.R
+import android.graphics.drawable.Drawable
 import android.os.Bundle
- import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
-import meh.daniel.com.movieunderbeer.databinding.ContentDetailsMovieBinding
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
-import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
+
 
 class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView {
 
@@ -29,7 +29,11 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
 
-        binding.toolbar.title = "Dangeon masters"
+        binding.includeToolbar.toolbar.title = "Dangeon masters"
+        binding.includeToolbar.toolbarNavigationBackButton.setOnClickListener {
+            movieDetailsPresenter.backExit()
+        }
+        var toolbar = binding.includeToolbar.toolbar
         var film = Film(id = 42664, localizedName = "Бойцовский клуб", name = "Fight Club",
             year = 1999, rating = 8.656, imageUrl =  "https://st.kp.yandex.net/images/film_iphone/iphone360_361.jpg",
             description = "Терзаемый хронической бессонницей и отчаянно пытающийся вырваться из мучительно скучной жизни, клерк встречает некоего Тайлера Дардена," +
