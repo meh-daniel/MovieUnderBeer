@@ -54,6 +54,16 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         router.navigateTo(screens.openFilm())
     }
 
+
+    fun getMovieBySelect(genre: FeedGenre){
+        if (genre.title == ""){
+            start()
+        }else{
+            getMovieByGenre(genre )
+        }
+    }
+
+
     private fun getHeader(header: String): MutableList<Item>{
         return mutableListOf<Item>(
             FeedHeader(header)

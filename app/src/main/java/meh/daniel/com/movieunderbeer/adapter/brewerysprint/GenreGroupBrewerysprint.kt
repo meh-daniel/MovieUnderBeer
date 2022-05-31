@@ -1,10 +1,13 @@
 package meh.daniel.com.movieunderbeer.adapter.brewerysprint
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
+import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapter.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -33,10 +36,9 @@ class GenreGroupBrewerysprint(
     override fun getDiffUtil() = diffUtil
 
     private val diffUtil = object : DiffUtil.ItemCallback<FeedGenreGroup>() {
-        override fun areItemsTheSame(oldItem: FeedGenreGroup, newItem: FeedGenreGroup) = oldItem.listGenre == newItem.listGenre
+        override fun areItemsTheSame(oldItem: FeedGenreGroup, newItem: FeedGenreGroup) = oldItem.listGenre.size == newItem.listGenre.size
 
-        @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: FeedGenreGroup, newItem: FeedGenreGroup) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: FeedGenreGroup, newItem: FeedGenreGroup) = true
     }
 
 }
@@ -51,18 +53,40 @@ class GenreGroupViewHolder(
     private var wtf = 1
 
     override fun onBind(item: FeedGenreGroup) = with(binding) {
-
+        Log.d("xxx:", "OnBIND!!!!")
         if (wtf == 1){
-            groupChipGenre.isSingleSelection
-            for (genre in item.listGenre) {
-                val chip = Chip(groupChipGenre.context)
-                chip.text = genre.title
-                chip.isClickable = true
-                chip.isCheckable = false
-                chip.setOnClickListener {
-                    getInfoGenre(FeedGenre(genre.title))
+
+            val chipGroup = ChipGroup(parentChips.context)
+            chipGroup.isSingleSelection = true
+            var id = 1
+            for (i in item.listGenre) {
+                val chip = Chip(parentChips.context)
+                val chipDrawable = ChipDrawable.createFromAttributes(
+                    parentChips.context,
+                    null,
+                    0,
+                    R.style.ChipsTheme
+                )
+                chip.id = id
+                chip.setTag(i.title)
+                id++
+                chip.setChipDrawable(chipDrawable)
+                chip.text = i.title
+                chipGroup.addView(chip)
+            }
+
+            parentChips.addView(chipGroup)
+            var lastId : Int = 666
+            for (index in 0 until chipGroup.childCount) {
+                val chip: Chip = chipGroup.getChildAt(index) as Chip
+                chip.setOnCheckedChangeListener { view, isChecked ->
+                    Log.d("xxx:", "${isChecked.toString()}")
+                    if(isChecked) {
+                        getInfoGenre(FeedGenre(view.tag.toString()))
+                    }else{
+                        getInfoGenre(FeedGenre(""))
+                    }
                 }
-                groupChipGenre.addView(chip)
             }
             wtf++
         }

@@ -60,7 +60,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     }
 
     override fun onListGenreClick(genre: FeedGenre)  {
-        movieListPresenter.getMovieByGenre(genre)
+        movieListPresenter.getMovieBySelect(genre)
     }
 
 
