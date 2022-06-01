@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">MovieUnderBeer</string>
+    <string name="app_name">MovieUnder Beer</string>
+
+    <!--    content_list_movie-->
+    <string name="genres">Жанры</string>
+    <string name="movies">Фильмы</string>
     <!--    content_details_movie-->
-    <string name="release_date">Release date</string>
-    <string name="rating">rating</string>
+    <string name="release_date">Дата выхода</string>
+    <string name="rating">Рейтинг</string>
+    <string name="info_about_movie">Информация о фильме</string>
+    <string name="unknown">неизвестно</string>
 </resources>

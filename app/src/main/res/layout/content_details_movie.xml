@@ -16,25 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/film_container_poster"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="16dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardElevation="7dp"
-        app:layout_constraintDimensionRatio="w,2:3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
-        <ImageView
-            android:id="@+id/film_poster"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription"/>
-    </androidx.cardview.widget.CardView>
-
     <TextView
         android:id="@+id/film_title_localized_name"
         android:layout_width="0dp"
@@ -42,10 +23,12 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="Movie localized name"/>
+        style="@style/text_h_6"
+        tools:text="Movie localized name" />
 
     <TextView
         android:id="@+id/film_title_name"
@@ -54,29 +37,30 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/film_title_localized_name"
-        tools:text="Movie title here"/>
+        style="@style/text_subtitle_2"
+        tools:text="Movie no localized name" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/film_group_genre"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:descendantFocusability="blocksDescendants"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/film_container_poster"
-        app:layout_constraintTop_toBottomOf="@+id/film_title_name"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/film_title_name" />
 
     <View
         android:id="@+id/view_divider_first"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:background="@color/yellow_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,10 +76,11 @@
         app:layout_constraintEnd_toStartOf="@+id/view_divider_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_first"
+        style="@style/text_subtitle_2"
         tools:text="7.666"/>
 
     <TextView
-        android:id="@+id/label_release_date"
+        android:id="@+id/label_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -103,6 +88,7 @@
         app:layout_constraintEnd_toEndOf="@+id/film_rating"
         app:layout_constraintStart_toStartOf="@+id/film_rating"
         app:layout_constraintTop_toBottomOf="@+id/film_rating"
+        style="@style/text_caption"
         android:text="@string/rating"/>
 
     <View
@@ -127,11 +113,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view_divider_vertical"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_first"
+        style="@style/text_subtitle_2"
         tools:text="1998"/>
 
 
     <TextView
-        android:id="@+id/label_release_date2"
+        android:id="@+id/label_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -139,6 +126,7 @@
         app:layout_constraintEnd_toEndOf="@+id/film_year"
         app:layout_constraintStart_toStartOf="@+id/film_year"
         app:layout_constraintTop_toBottomOf="@+id/film_year"
+        style="@style/text_caption"
         android:text="@string/release_date"/>
 
     <View
@@ -160,17 +148,20 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_second"
-        tools:text="Overview"/>
+        style="@style/text_overline"
+        android:text="@string/info_about_movie" />
 
     <TextView
         android:id="@+id/text_overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_overview"/>
+        app:layout_constraintTop_toBottomOf="@+id/label_overview"
+        style="@style/text_body_1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

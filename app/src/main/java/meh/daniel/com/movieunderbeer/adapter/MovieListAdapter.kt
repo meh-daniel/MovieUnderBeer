@@ -1,13 +1,10 @@
 package meh.daniel.com.movieunderbeer.adapter
 
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenreGroup
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedHeader
 
@@ -32,4 +29,5 @@ class MovieListAdapter(
             }
         }
     }
+
 }

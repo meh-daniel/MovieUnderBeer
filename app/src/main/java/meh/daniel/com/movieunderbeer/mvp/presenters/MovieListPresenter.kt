@@ -100,13 +100,13 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
     }
 
     private fun getHeader(header: String): MutableList<Item>{
-        return mutableListOf<Item>(
+        return mutableListOf(
             FeedHeader(header)
         )
     }
 
     private fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
-        val listFilm = mutableListOf<Item>()
+        val listFilm = mutableListOf<Film>()
 
         if (response.isSuccessful) {
             val items = response.body()?.films
@@ -132,11 +132,13 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             }
         }
 
-        return listFilm
+        listFilm.sortBy { it.name }
+
+        return listFilm.toMutableList()
     }
 
     private fun getListFilms(response: Response<FilmData>, genreFilter: FeedGenre) : MutableList<Item>{
-        val listFilm = mutableListOf<Item>()
+        val listFilm = mutableListOf<Film>()
 
         if (response.isSuccessful) {
             val items = response.body()?.films
@@ -165,7 +167,9 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             }
         }
 
-        return listFilm
+        listFilm.sortBy { it.name }
+
+        return listFilm.toMutableList()
     }
 
     private fun getListGenreGroup(response: Response<FilmData>): MutableList<Item> {

@@ -63,7 +63,7 @@ class GenreGroupViewHolder(
                 parentChips.context,
                 null,
                 0,
-                R.style.ChipsTheme
+                R.style.chips_theme
             )
             chip.id = id
             chip.tag = "все"
@@ -78,7 +78,7 @@ class GenreGroupViewHolder(
                     parentChips.context,
                     null,
                     0,
-                    R.style.ChipsTheme
+                    R.style.chips_theme
                 )
                 chipGenre.id = id
                 chipGenre.tag = i.title

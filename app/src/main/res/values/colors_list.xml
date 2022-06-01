@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+
+    <color name="yellow_700">#fbc02d</color>
+    <color name="yellow_700_dark">#c49000</color>
+    <color name="yellow_700_light">#fff263</color>
+
+    <color name="yellow_700_monochrome">#E8B22A</color>
+    <color name="yellow_700_monochrome_light">#B58B21</color>
+    <color name="yellow_700_monochrome_dark">#695932</color>
+
+</resources>

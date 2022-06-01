@@ -1,12 +1,12 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -45,6 +45,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     }
 
     override fun init() {
+        initToolBar()
         setupAdapter()
     }
 
@@ -71,6 +72,15 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
     }
+
+    private fun initToolBar(){
+        with(binding){
+            includeToolbar.toolbar.title = resources.getText(R.string.movies)
+            includeToolbar.toolbarNavigationBackButton.visibility = View.GONE
+        }
+    }
+
+
 
 }
 

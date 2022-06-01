@@ -4,7 +4,6 @@ import android.net.Uri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import kotlinx.coroutines.runBlocking
-import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.di.modules.ApiModule
@@ -76,6 +75,5 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
         return filmData
     }
-
 
 }

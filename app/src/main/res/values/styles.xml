@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--    текст для заголовка-->
-    <style name="item_text_subtitle_1">
-        <item name="android:textSize">16dp</item>
+    <!--    for layout item_header-->
+    <style name="item_header" parent="text_subtitle_1">
+        <item name="android:textColor">@color/color_dark_primary</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
+    <!--    for layout item_film-->
+    <style name="item_film" parent="text_caption">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <!--    for view chips-->
+    <style name="chips_theme" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:radius">16dp</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#99000000</item>
+        <item name="chipBackgroundColor">@color/primary_color</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="chipStrokeColor">@color/select_color_chip_background</item>
     </style>
 
-    <!--    текст для айтема списка-->
-    <style name="text_caption">
-        <item name="android:textSize">12dp</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textStyle">bold</item>
+    <!--    for textOverview-->
+    <style name="subtitle_text" parent="text_subtitle_1">
+        <item name="android:textColor">@color/color_dark_primary</item>
+        <item name="android:layout_gravity">left</item>
     </style>
 
-    <!--Toolbar-->
-    <style name="AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-    </style>
-    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
-
-
-
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/yellow_100_A</item>
-        <item name="colorPrimaryDark">@color/yellow_100_A_dark</item>
-        <item name="colorAccent">@color/yellow_100_A_light</item>
+    <!--    for textOverview-->
+    <style name="text_description" parent="text_subtitle_1">
+        <item name="android:textColor">@color/color_dark_primary_light</item>
+        <item name="android:layout_gravity">left</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <!--    for toolbar-->
+    <style name="Theme.MovieUnderBeer.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-    <style name="ChipsTheme" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="android:radius">8dp</item>
-        <item name="android:width">30dp</item>
-        <item name="chipMinHeight">35dp</item>
-        <item name="chipStartPadding">8dp</item>
-        <item name="chipEndPadding">8dp</item>
-        <item name="android:textAlignment">center</item>
+    <style name="AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textSize">20sp</item>
     </style>
+    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
 
 </resources>
