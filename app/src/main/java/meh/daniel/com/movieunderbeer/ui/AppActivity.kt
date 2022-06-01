@@ -5,7 +5,7 @@ import com.github.terrakok.cicerone.*
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.app.App
-import meh.daniel.com.movieunderbeer.databinding.ActivityMainBinding
+import meh.daniel.com.movieunderbeer.databinding.ActivityAppBinding
 import meh.daniel.com.movieunderbeer.mvp.navigation.IScreens
 import moxy.MvpAppCompatActivity
 import javax.inject.Inject
@@ -20,13 +20,13 @@ class AppActivity : MvpAppCompatActivity() {
     @Inject
     lateinit var AppScreens: IScreens
 
-    private lateinit var vb: ActivityMainBinding
+    private lateinit var vb: ActivityAppBinding
     private val navigator : Navigator = AppNavigator(this, R.id.container)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectDependency()
-        vb = ActivityMainBinding.inflate(layoutInflater)
+        vb = ActivityAppBinding.inflate(layoutInflater)
         setContentView(vb.root)
         if (savedInstanceState == null){
             navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))

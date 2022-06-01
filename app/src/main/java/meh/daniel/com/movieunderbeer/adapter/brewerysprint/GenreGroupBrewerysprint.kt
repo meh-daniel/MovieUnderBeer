@@ -1,7 +1,5 @@
 package meh.daniel.com.movieunderbeer.adapter.brewerysprint
 
-import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -53,44 +51,56 @@ class GenreGroupViewHolder(
     private var wtf = 1
 
     override fun onBind(item: FeedGenreGroup) = with(binding) {
-        Log.d("xxx:", "OnBIND!!!!")
         if (wtf == 1){
 
             val chipGroup = ChipGroup(parentChips.context)
             chipGroup.isSingleSelection = true
+            chipGroup.isSelectionRequired = true
             var id = 1
+
+            val chip = Chip(parentChips.context)
+            val chipDrawable = ChipDrawable.createFromAttributes(
+                parentChips.context,
+                null,
+                0,
+                R.style.ChipsTheme
+            )
+            chip.id = id
+            chip.tag = "все"
+            id++
+            chip.setChipDrawable(chipDrawable)
+            chip.text = "все"
+            chipGroup.addView(chip)
+
             for (i in item.listGenre) {
-                val chip = Chip(parentChips.context)
-                val chipDrawable = ChipDrawable.createFromAttributes(
+                val chipGenre = Chip(parentChips.context)
+                val chipGenreDrawable = ChipDrawable.createFromAttributes(
                     parentChips.context,
                     null,
                     0,
                     R.style.ChipsTheme
                 )
-                chip.id = id
-                chip.setTag(i.title)
+                chipGenre.id = id
+                chipGenre.tag = i.title
                 id++
-                chip.setChipDrawable(chipDrawable)
-                chip.text = i.title
-                chipGroup.addView(chip)
+                chipGenre.setChipDrawable(chipGenreDrawable)
+                chipGenre.text = i.title
+                chipGroup.addView(chipGenre)
             }
 
             parentChips.addView(chipGroup)
-            var lastId : Int = 666
+
             for (index in 0 until chipGroup.childCount) {
-                val chip: Chip = chipGroup.getChildAt(index) as Chip
-                chip.setOnCheckedChangeListener { view, isChecked ->
-                    Log.d("xxx:", "${isChecked.toString()}")
+                val chipSetOnClick: Chip = chipGroup.getChildAt(index) as Chip
+                chipSetOnClick.setOnCheckedChangeListener { view, isChecked ->
                     if(isChecked) {
                         getInfoGenre(FeedGenre(view.tag.toString()))
                     }
-                    else{
-                        getInfoGenre(FeedGenre(""))
-                    }
                 }
             }
+
             wtf++
         }
-
     }
+
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
@@ -64,9 +65,10 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     }
 
     private fun setupAdapter() {
-        with(binding.contentFilms) {
-            layoutManager = GridLayoutManager(context, 4)
-            adapter = this@MovieListFragment.adapter
+        with(binding) {
+            contentFilms.layoutManager = GridLayoutManager(context, 4)
+            contentFilms.adapter = this@MovieListFragment.adapter
+            adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
     }
 

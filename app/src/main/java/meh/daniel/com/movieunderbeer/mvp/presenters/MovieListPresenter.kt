@@ -32,7 +32,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
     }
 
     fun getMovieBySelect(genre: FeedGenre){
-        if (genre.title == ""){
+        if (genre.title == "все"){
             getMovie()
         }else{
             getMovieByGenre(genre)
