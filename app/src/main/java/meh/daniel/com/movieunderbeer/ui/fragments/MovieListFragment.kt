@@ -80,8 +80,6 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
         }
     }
 
-
-
 }
 
 

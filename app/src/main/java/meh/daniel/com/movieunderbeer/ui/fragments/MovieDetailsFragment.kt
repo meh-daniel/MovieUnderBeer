@@ -53,6 +53,8 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
         initListenerActionsFilm()
     }
 
+    override fun backPressed() : Boolean = movieDetailsPresenter.backExit()
+
     override fun loadFilm(film: Film) {
         with(binding.includeContent){
             filmTitleLocalizedName.text = film.localizedName
@@ -91,8 +93,6 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
         }
         genresGen(item = film, binding.includeContent.filmGroupGenre)
     }
-
-    override fun backPressed() : Boolean = movieDetailsPresenter.backExit()
 
     private fun genresGen(item: Film, chipGroup: ChipGroup){
         for (i in item.genres!!) {

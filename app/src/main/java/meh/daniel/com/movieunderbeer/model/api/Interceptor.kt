@@ -5,6 +5,7 @@ import okhttp3.Request
 import okhttp3.Response
 
 class Interceptor : Interceptor {
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request : Request = chain.request()
             .newBuilder()
@@ -12,4 +13,5 @@ class Interceptor : Interceptor {
             .build()
         return chain.proceed(request)
     }
+
 }
