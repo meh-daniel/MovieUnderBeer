@@ -10,11 +10,12 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndStrategy::class)
 interface MovieListView : BaseView {
 
-    fun setupAdapter()
+    fun init()
 
     fun setData(dataList: MutableList<Item>)
 
     fun onListFilmClick(film : Film)
 
     fun onListGenreClick(genre: FeedGenre)
+
 }

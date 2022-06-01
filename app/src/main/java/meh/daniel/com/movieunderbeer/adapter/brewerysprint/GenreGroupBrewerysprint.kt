@@ -83,7 +83,8 @@ class GenreGroupViewHolder(
                     Log.d("xxx:", "${isChecked.toString()}")
                     if(isChecked) {
                         getInfoGenre(FeedGenre(view.tag.toString()))
-                    }else{
+                    }
+                    else{
                         getInfoGenre(FeedGenre(""))
                     }
                 }

@@ -1,22 +1,18 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
-import android.R
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
+import meh.daniel.com.movieunderbeer.mvp.navigation.BackButtonListener
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
 
-class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView {
+class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, BackButtonListener {
 
     @InjectPresenter
     lateinit var movieDetailsPresenter: MovieDetailsPresenter
@@ -26,81 +22,62 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
         container: ViewGroup?
     ) = FragmentMovieDetailsBinding.inflate(inflater, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        injectDependency()
-
-        binding.includeToolbar.toolbar.title = "Dangeon masters"
-        binding.includeToolbar.toolbarNavigationBackButton.setOnClickListener {
-            movieDetailsPresenter.backExit()
-        }
-        var toolbar = binding.includeToolbar.toolbar
-        var film = Film(id = 42664, localizedName = "Бойцовский клуб", name = "Fight Club",
-            year = 1999, rating = 8.656, imageUrl =  "https://st.kp.yandex.net/images/film_iphone/iphone360_361.jpg",
-            description = "Терзаемый хронической бессонницей и отчаянно пытающийся вырваться из мучительно скучной жизни, клерк встречает некоего Тайлера Дардена," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " харизматического торговца мылом с извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а саморазрушение — единственное," +
-                    " ради чего стоит жить. Пройдет немного времени, и вот уже главные герои лупят друг друга почем зря на стоянке перед баром, и очищающий мордобой " +
-                    "доставляет им высшее блаженство. Приобщая других мужчин к простым радостям физической жестокости, они основывают тайный Бойцовский Клуб, который имеет" +
-                    " огромный успех. Но в концовке фильма всех ждет шокирующее открытие, которое может привести к непредсказуемым событиям…",
-            genres = listOf("триллер", "драма", "криминал") )
-
-        Glide.with(binding.imageMovieBackdrop)
-            .load(film.imageUrl)
-            .into(binding.imageMovieBackdrop)
-
-        Glide.with(binding.includeContent.filmPoster)
-            .load(film.imageUrl)
-            .into(binding.includeContent.filmPoster)
-
-        binding.includeContent.filmTitleLocalizedName.text = film.localizedName
-        binding.includeContent.filmTitleName.text = film.name
-        binding.includeContent.textOverview.text = film.description
-        binding.includeContent.filmYear.text = film.year.toString()
-        binding.includeContent.filmRating.text = film.rating.toString()
-        var chip: Chip = Chip(binding.includeContent.filmGroupGenre.context)
-        var chip2: Chip = Chip(binding.includeContent.filmGroupGenre.context)
-        var chip3: Chip = Chip(binding.includeContent.filmGroupGenre.context)
-        chip.setText("триллер")
-        chip.isCheckable = false
-        chip.isClickable = false
-        binding.includeContent.filmGroupGenre.addView(chip)
-
-        chip2.setText("драма")
-        chip2.isCheckable = false
-        chip2.isClickable = false
-        binding.includeContent.filmGroupGenre.addView(chip2)
-
-        chip3.setText("криминал")
-        chip3.isCheckable = false
-        chip3.isClickable = false
-        binding.includeContent.filmGroupGenre.addView(chip3)
-
-
-
-    }
-
     override fun injectDependency() {
         movieDetailsPresenter.injectDependency()
     }
 
     companion object{
-        private const val ARGS_NAME = "id"
-        fun newInstance(id: Int): MovieDetailsFragment{
-            val args = Bundle()
-            val fragment = MovieDetailsFragment()
-            fragment.arguments = args
-            return fragment
+        private const val ARGS_NAME = "dataFilm"
+        fun newInstance(dataFilm: Int): MovieDetailsFragment{
+            return MovieDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARGS_NAME, dataFilm)
+                }
+            }
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        injectDependency()
+        arguments?.getInt(ARGS_NAME)?.let { movieDetailsPresenter.start(it) }
+    }
+
+
+    override fun init() {
+        initListenerActionsFilm()
+    }
+
+    override fun loadFilm(film: Film) {
+        with(binding){
+            includeToolbar.toolbar.title = film.name
+
+            Glide.with(imageMovieBackdrop)
+                .load(film.imageUrl)
+                .into(imageMovieBackdrop)
+
+            Glide.with(binding.includeContent.filmPoster)
+                .load(film.imageUrl)
+                .into(binding.includeContent.filmPoster)
+
+            includeContent.filmTitleLocalizedName.text = film.localizedName
+            includeContent.filmTitleName.text = film.name
+            includeContent.textOverview.text = film.description
+            includeContent.filmYear.text = film.year.toString()
+            includeContent.filmRating.text = film.rating.toString()
+        }
+    }
+
+
+    private fun initListenerActionsFilm(){
+        with(binding){
+            includeToolbar.toolbarNavigationBackButton.setOnClickListener {
+                backPressed()
+            }
+        }
+    }
+
+    override fun backPressed() : Boolean = movieDetailsPresenter.backExit()
 
 
 }

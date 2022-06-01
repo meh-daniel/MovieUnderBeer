@@ -10,6 +10,6 @@ class AppScreens : IScreens {
 
     override fun homeScreen(): Screen = FragmentScreen{ MovieListFragment()}
 
-    override fun openFilm(): Screen = FragmentScreen {MovieDetailsFragment()}
+    override fun openFilm(dataFilm: Int): Screen = FragmentScreen {MovieDetailsFragment.newInstance(dataFilm)}
 
 }

@@ -1,5 +1,6 @@
 package meh.daniel.com.movieunderbeer.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
 
     @InjectPresenter
     lateinit var movieListPresenter: MovieListPresenter
+
     private var adapter: BrewerysprintAdapter = MovieListAdapter(listOf(
         HeaderBrewerysprint(),
         GenreGroupBrewerysprint(::onListGenreClick),
@@ -39,30 +41,34 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         injectDependency()
-        movieListPresenter.start()
     }
 
-    override fun setupAdapter() {
-        with(binding.contentFilms) {
-            layoutManager = GridLayoutManager(context, 4)
-            adapter = this@MovieListFragment.adapter
-        }
+    override fun init() {
+        setupAdapter()
     }
 
     override fun setData(dataList: MutableList<Item>) {
-        binding.contentFilms.postDelayed({
-            adapter.submitList(dataList)
-        }, 200)
+        with(binding){
+            contentFilms.postDelayed({
+                adapter.submitList(dataList)
+            }, 200)
+        }
     }
 
     override fun onListFilmClick(film: Film)  {
-        film.id?.let { movieListPresenter.openFilm() }
+        movieListPresenter.openFilm(film)
     }
 
     override fun onListGenreClick(genre: FeedGenre)  {
         movieListPresenter.getMovieBySelect(genre)
     }
 
+    private fun setupAdapter() {
+        with(binding.contentFilms) {
+            layoutManager = GridLayoutManager(context, 4)
+            adapter = this@MovieListFragment.adapter
+        }
+    }
 
 }
 

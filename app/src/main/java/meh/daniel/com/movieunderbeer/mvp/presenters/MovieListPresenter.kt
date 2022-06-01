@@ -20,15 +20,38 @@ import retrofit2.Response
 @InjectViewState
 class MovieListPresenter : BasePresenter<MovieListView>() {
 
-    fun start() : Unit = runBlocking {
+    override fun injectDependency() {
+        App.instance.appComponent.inject(this)
+    }
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+
+        viewState.init()
+        getMovie()
+    }
+
+    fun getMovieBySelect(genre: FeedGenre){
+        if (genre.title == ""){
+            getMovie()
+        }else{
+            getMovieByGenre(genre)
+        }
+    }
+
+    fun openFilm(film : Film){
+        film.id?.let {
+            router.navigateTo(screens.openFilm(film.id))
+        }
+    }
+
+    private fun getMovie() : Unit = runBlocking {
 
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
         val repo = RepositoryModule().filmRepository(api)
         val response: Response<FilmData> = (Dispatchers.Default){
             repo.loadFilms()
         }
-
-        viewState.setupAdapter()
 
         val listHeaderGenre: MutableList<Item> = (Dispatchers.Default){
             getHeader("Жанры")
@@ -47,30 +70,9 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         listHeaderGenre.addAll(listFilm)
 
         viewState.setData(listHeaderGenre)
-
     }
 
-    fun openFilm(){
-        router.navigateTo(screens.openFilm())
-    }
-
-
-    fun getMovieBySelect(genre: FeedGenre){
-        if (genre.title == ""){
-            start()
-        }else{
-            getMovieByGenre(genre )
-        }
-    }
-
-
-    private fun getHeader(header: String): MutableList<Item>{
-        return mutableListOf<Item>(
-            FeedHeader(header)
-        )
-    }
-
-    fun getMovieByGenre(genre: FeedGenre) : Unit = runBlocking {
+    private fun getMovieByGenre(genre: FeedGenre) : Unit = runBlocking {
 
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
         val repo = RepositoryModule().filmRepository(api)
@@ -95,7 +97,12 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         listHeaderGenre.addAll(listFilm)
 
         viewState.setData(listHeaderGenre)
+    }
 
+    private fun getHeader(header: String): MutableList<Item>{
+        return mutableListOf<Item>(
+            FeedHeader(header)
+        )
     }
 
     private fun getListFilms(response: Response<FilmData>) : MutableList<Item>{
@@ -186,10 +193,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         return mutableListOf(
             FeedGenreGroup(listGenre)
         )
-    }
-
-    override fun injectDependency() {
-        App.instance.appComponent.inject(this)
     }
 
 }
