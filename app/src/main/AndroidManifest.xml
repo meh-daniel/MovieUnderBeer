@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MovieUnderBeer"
         android:name=".app.App">
         <activity
-            android:name=".ui.AppActivity"
+            android:name=".presentation.AppActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

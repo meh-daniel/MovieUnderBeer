@@ -1,9 +1,10 @@
-package meh.daniel.com.movieunderbeer.adapter.base
+package meh.daniel.com.movieunderbeer.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
+import meh.daniel.com.movieunderbeer.adapter.base.BaseViewHolder
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 

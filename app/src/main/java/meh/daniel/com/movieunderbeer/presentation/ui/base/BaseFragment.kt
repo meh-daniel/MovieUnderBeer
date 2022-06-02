@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui.base
+package meh.daniel.com.movieunderbeer.presentation.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

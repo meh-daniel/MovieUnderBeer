@@ -1,8 +1,8 @@
-package meh.daniel.com.movieunderbeer.adapter
+package meh.daniel.com.movieunderbeer.presentation.ui.movielist.adapter
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
+import meh.daniel.com.movieunderbeer.adapter.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.ItemBrewerysprint
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenreGroup

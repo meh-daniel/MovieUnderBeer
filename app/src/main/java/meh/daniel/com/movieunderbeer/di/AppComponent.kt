@@ -2,11 +2,11 @@ package meh.daniel.com.movieunderbeer.di
 
 import dagger.Component
 import meh.daniel.com.movieunderbeer.di.modules.*
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
-import meh.daniel.com.movieunderbeer.ui.AppActivity
-import meh.daniel.com.movieunderbeer.ui.fragments.MovieDetailsFragment
-import meh.daniel.com.movieunderbeer.ui.fragments.MovieListFragment
+import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsPresenter
+import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListPresenter
+import meh.daniel.com.movieunderbeer.presentation.AppActivity
+import meh.daniel.com.movieunderbeer.presentation.ui.moviedetails.MovieDetailsFragment
+import meh.daniel.com.movieunderbeer.presentation.ui.movielist.MovieListFragment
 import javax.inject.Singleton
 
 @Singleton

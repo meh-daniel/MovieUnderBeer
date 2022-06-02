@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui.fragments
+package meh.daniel.com.movieunderbeer.presentation.ui.moviedetails
 
 import android.os.Bundle
 import android.view.*
@@ -10,14 +10,15 @@ import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.mvp.navigation.IBackButtonListener
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
-import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
-import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
+import meh.daniel.com.movieunderbeer.presentation.navigation.common.IBackButtonListener
+import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsPresenter
+import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsView
+import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
 
-class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, IBackButtonListener {
+class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView,
+    IBackButtonListener {
 
     @InjectPresenter
     lateinit var movieDetailsPresenter: MovieDetailsPresenter
@@ -33,7 +34,7 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
 
     companion object{
         private const val ARGS_NAME = "dataFilm"
-        fun newInstance(dataFilm: Int): MovieDetailsFragment{
+        fun newInstance(dataFilm: Int): MovieDetailsFragment {
             return MovieDetailsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARGS_NAME, dataFilm)

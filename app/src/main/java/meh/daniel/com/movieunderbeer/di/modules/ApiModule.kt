@@ -7,6 +7,7 @@ import dagger.Provides
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.model.api.IDataSource
 import meh.daniel.com.movieunderbeer.model.api.Interceptor
+import meh.daniel.com.movieunderbeer.model.network.ResultAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,6 +33,7 @@ class ApiModule {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(client())
+            .addCallAdapterFactory(ResultAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(IDataSource::class.java)

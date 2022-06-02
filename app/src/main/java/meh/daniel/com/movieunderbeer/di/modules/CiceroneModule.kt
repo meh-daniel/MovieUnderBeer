@@ -5,8 +5,8 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
-import meh.daniel.com.movieunderbeer.mvp.navigation.IScreens
-import meh.daniel.com.movieunderbeer.ui.navigation.AppScreens
+import meh.daniel.com.movieunderbeer.presentation.navigation.common.IScreens
+import meh.daniel.com.movieunderbeer.presentation.navigation.AppScreens
 import javax.inject.Singleton
 
 @Module

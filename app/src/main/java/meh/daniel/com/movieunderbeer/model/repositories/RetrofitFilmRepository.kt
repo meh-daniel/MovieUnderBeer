@@ -2,13 +2,13 @@ package meh.daniel.com.movieunderbeer.model.repositories
 
 import meh.daniel.com.movieunderbeer.model.api.IDataSource
 import meh.daniel.com.movieunderbeer.entities.films.FilmData
-import retrofit2.Response
+import meh.daniel.com.movieunderbeer.model.network.Result
 
 class RetrofitFilmRepository(
     private val api: IDataSource
 ) : IFilmRepository {
 
-    override suspend fun loadFilms(): Response<FilmData> {
+    override suspend fun loadFilms(): Result<FilmData> {
         return api.getFilm()
     }
 

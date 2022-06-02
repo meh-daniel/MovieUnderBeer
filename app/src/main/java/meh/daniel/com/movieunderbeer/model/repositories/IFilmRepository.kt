@@ -1,11 +1,10 @@
 package meh.daniel.com.movieunderbeer.model.repositories
 
 import meh.daniel.com.movieunderbeer.entities.films.FilmData
-import retrofit2.Response
-
+import meh.daniel.com.movieunderbeer.model.network.Result
 
 interface IFilmRepository {
 
-    suspend fun loadFilms(): Response<FilmData>
+    suspend fun loadFilms(): Result<FilmData>
 
 }

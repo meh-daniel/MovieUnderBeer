@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui
+package meh.daniel.com.movieunderbeer.presentation
 
 import android.os.Bundle
 import com.github.terrakok.cicerone.*
@@ -6,7 +6,7 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.databinding.ActivityAppBinding
-import meh.daniel.com.movieunderbeer.mvp.navigation.IScreens
+import meh.daniel.com.movieunderbeer.presentation.navigation.common.IScreens
 import moxy.MvpAppCompatActivity
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
-package meh.daniel.com.movieunderbeer.mvp.view
+package meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails
 
 import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.mvp.base.BaseView
+import meh.daniel.com.movieunderbeer.presentation.mvp.base.BaseView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType
 

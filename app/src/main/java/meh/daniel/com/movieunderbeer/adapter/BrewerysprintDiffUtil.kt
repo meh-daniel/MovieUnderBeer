@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.adapter.base
+package meh.daniel.com.movieunderbeer.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import meh.daniel.com.movieunderbeer.adapter.common.Item

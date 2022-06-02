@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.mvp.navigation
+package meh.daniel.com.movieunderbeer.presentation.navigation.common
 
 import com.github.terrakok.cicerone.Screen
 

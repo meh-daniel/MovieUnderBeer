@@ -1,4 +1,4 @@
-package meh.daniel.com.movieunderbeer.ui.fragments
+package meh.daniel.com.movieunderbeer.presentation.ui.movielist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.R
-import meh.daniel.com.movieunderbeer.adapter.MovieListAdapter
-import meh.daniel.com.movieunderbeer.adapter.base.BrewerysprintAdapter
+import meh.daniel.com.movieunderbeer.presentation.ui.movielist.adapter.MovieListAdapter
+import meh.daniel.com.movieunderbeer.adapter.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.adapter.common.Item
 import meh.daniel.com.movieunderbeer.adapter.brewerysprint.FilmBrewerysprint
 import meh.daniel.com.movieunderbeer.adapter.brewerysprint.GenreGroupBrewerysprint
@@ -16,9 +16,9 @@ import meh.daniel.com.movieunderbeer.adapter.brewerysprint.HeaderBrewerysprint
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
 import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
-import meh.daniel.com.movieunderbeer.mvp.presenters.MovieListPresenter
-import meh.daniel.com.movieunderbeer.mvp.view.MovieListView
-import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
+import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListPresenter
+import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListView
+import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
 class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListView {
