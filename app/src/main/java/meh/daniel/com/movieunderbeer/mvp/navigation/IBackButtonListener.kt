@@ -1,6 +1,6 @@
 package meh.daniel.com.movieunderbeer.mvp.navigation
 
-interface BackButtonListener {
+interface IBackButtonListener {
 
     fun backPressed(): Boolean
 

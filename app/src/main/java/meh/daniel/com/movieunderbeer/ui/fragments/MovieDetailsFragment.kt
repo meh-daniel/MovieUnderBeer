@@ -10,14 +10,14 @@ import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.mvp.navigation.BackButtonListener
+import meh.daniel.com.movieunderbeer.mvp.navigation.IBackButtonListener
 import meh.daniel.com.movieunderbeer.mvp.presenters.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.mvp.view.MovieDetailsView
 import meh.daniel.com.movieunderbeer.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
 
-class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, BackButtonListener {
+class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, IBackButtonListener {
 
     @InjectPresenter
     lateinit var movieDetailsPresenter: MovieDetailsPresenter

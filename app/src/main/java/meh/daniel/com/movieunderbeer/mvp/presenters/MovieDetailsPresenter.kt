@@ -1,6 +1,7 @@
 package meh.daniel.com.movieunderbeer.mvp.presenters
 
 import android.net.Uri
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import kotlinx.coroutines.runBlocking
@@ -29,7 +30,6 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
 
     fun start(id: Int) : Unit = runBlocking {
-
         viewState.init()
 
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
