@@ -121,7 +121,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             viewState.setData(data)
 
         } else{
-            Log.d("xxx:", "${response.toString()}")
+            viewState.showError("dfasdf")
         }
 
 

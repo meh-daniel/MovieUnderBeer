@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--    for layout item_header-->
-    <style name="item_header" parent="text_subtitle_1">
+    <!--    start layout item_header-->
+    <style name="item_header_theme" parent="text_subtitle_1">
         <item name="android:textColor">@color/color_dark_primary</item>
         <item name="android:layout_gravity">left</item>
     </style>
-    <!--    for layout item_film-->
+    <!--    end layout item_header-->
+
+
+    <!--    start layout item_film-->
     <style name="item_film" parent="text_caption">
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
+    <!--    end layout item_film-->
+
+
+    <!--    start layout details film-->
+    <!--    Главный заголовок-->
+    <style name="film_title_localized_name_theme" parent="text_h_6">
+        <item name="android:textColor">#DD000000</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <!--    Второстепенный заголовок-->
+    <style name="film_title_name_theme" parent="text_subtitle_2">
+        <item name="android:textColor">#DF000000</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <!--    Рейтинг и дата выхода-->
+    <style name="film_data_theme" parent="text_subtitle_2">
+        <item name="android:textColor">#DF000000</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <!--    for textOverview-->
+    <style name="film_data_label_theme" parent="text_caption">
+        <item name="android:textColor">#D0000000</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <!--    for label_overview-->
+    <style name="text_overline_theme" parent="text_overline">
+        <item name="android:textColor">#D0000000</item>
+    </style>
+    <!--    for text_overview-->
+    <style name="text_overview_theme" parent="text_body_1">
+        <item name="android:textColor">#D0000000</item>
+    </style>
+    <!--    end layout details film-->
+
+
     <!--    for view chips-->
     <style name="chips_theme" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="android:radius">16dp</item>
@@ -28,18 +68,6 @@
         <item name="chipBackgroundColor">@color/primary_color</item>
         <item name="chipStrokeWidth">2dp</item>
         <item name="chipStrokeColor">@color/select_color_chip_background</item>
-    </style>
-
-    <!--    for textOverview-->
-    <style name="subtitle_text" parent="text_subtitle_1">
-        <item name="android:textColor">@color/color_dark_primary</item>
-        <item name="android:layout_gravity">left</item>
-    </style>
-
-    <!--    for textOverview-->
-    <style name="text_description" parent="text_subtitle_1">
-        <item name="android:textColor">@color/color_dark_primary_light</item>
-        <item name="android:layout_gravity">left</item>
     </style>
 
     <!--    for toolbar-->
