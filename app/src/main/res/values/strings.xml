@@ -7,6 +7,7 @@
     <!--    content_details_movie-->
     <string name="release_date">Дата выхода</string>
     <string name="rating">Рейтинг</string>
-    <string name="info_about_movie">Информация о фильме</string>
+    <string name="info_about_movie">Детали о фильме</string>
+    <string name="toolbar_movie">Об фильме</string>
     <string name="unknown">неизвестно</string>
 </resources>

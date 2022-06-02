@@ -17,8 +17,7 @@ import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
 
 
-class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView,
-    IBackButtonListener {
+class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, IBackButtonListener {
 
     @InjectPresenter
     lateinit var movieDetailsPresenter: MovieDetailsPresenter
@@ -75,7 +74,7 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
             }
         }
         with(binding.toolbarLayout){
-            title = resources.getText(R.string.info_about_movie)
+            title = resources.getText(R.string.toolbar_movie)
         }
         with(binding){
             when {
@@ -93,6 +92,10 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
             }
         }
         genresGen(item = film, binding.includeContent.filmGroupGenre)
+    }
+
+    override fun showError(message: String) {
+        TODO("Not yet implemented")
     }
 
     private fun genresGen(item: Film, chipGroup: ChipGroup){

@@ -12,4 +12,6 @@ interface MovieDetailsView : BaseView {
 
     fun loadFilm(film: Film)
 
+    fun showError(message: String)
+
 }

@@ -18,4 +18,6 @@ interface MovieListView : BaseView {
 
     fun onListGenreClick(genre: FeedGenre)
 
+    fun showError(message: String)
+
 }

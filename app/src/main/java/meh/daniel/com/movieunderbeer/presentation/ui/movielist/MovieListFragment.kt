@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import meh.daniel.com.movieunderbeer.R
+import meh.daniel.com.movieunderbeer.databinding.AlertDialogErrorBinding
 import meh.daniel.com.movieunderbeer.presentation.ui.movielist.adapter.MovieListAdapter
 import meh.daniel.com.movieunderbeer.presentation.adapter.BrewerysprintAdapter
 import meh.daniel.com.movieunderbeer.presentation.adapter.common.Item
@@ -63,6 +65,15 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
 
     override fun onListGenreClick(genre: FeedGenre)  {
         movieListPresenter.getMovieBySelect(genre)
+    }
+
+    override fun showError(message: String) {
+        val dialogBinding: AlertDialogErrorBinding = AlertDialogErrorBinding.inflate(layoutInflater)
+        val dialog: AlertDialog = AlertDialog.Builder(this.requireContext())
+            .setView(dialogBinding.root)
+            .create()
+        dialog.show()
+        dialogBinding.errorButtonClose.setOnClickListener { dialog.dismiss() }
     }
 
     private fun setupAdapter() {
