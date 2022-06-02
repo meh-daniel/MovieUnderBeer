@@ -9,11 +9,11 @@ import meh.daniel.com.movieunderbeer.app.App
 import meh.daniel.com.movieunderbeer.app.Constants
 import meh.daniel.com.movieunderbeer.di.modules.ApiModule
 import meh.daniel.com.movieunderbeer.di.modules.RepositoryModule
-import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.entities.films.FilmData
-import meh.daniel.com.movieunderbeer.model.network.Result
-import meh.daniel.com.movieunderbeer.model.network.asSuccess
-import meh.daniel.com.movieunderbeer.model.network.isSuccess
+import meh.daniel.com.movieunderbeer.domain.entities.films.Film
+import meh.daniel.com.movieunderbeer.domain.entities.films.FilmData
+import meh.daniel.com.movieunderbeer.domain.model.network.Result
+import meh.daniel.com.movieunderbeer.domain.model.network.asSuccess
+import meh.daniel.com.movieunderbeer.domain.model.network.isSuccess
 import meh.daniel.com.movieunderbeer.presentation.mvp.base.BasePresenter
 import moxy.InjectViewState
 

@@ -9,7 +9,7 @@ import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.R
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
-import meh.daniel.com.movieunderbeer.entities.films.Film
+import meh.daniel.com.movieunderbeer.domain.entities.films.Film
 import meh.daniel.com.movieunderbeer.presentation.navigation.common.IBackButtonListener
 import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsView

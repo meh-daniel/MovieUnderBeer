@@ -1,8 +1,8 @@
 package meh.daniel.com.movieunderbeer.presentation.mvp.movielist
 
-import meh.daniel.com.movieunderbeer.adapter.common.Item
-import meh.daniel.com.movieunderbeer.entities.films.Film
-import meh.daniel.com.movieunderbeer.entities.recyclerfeed.FeedGenre
+import meh.daniel.com.movieunderbeer.presentation.adapter.common.Item
+import meh.daniel.com.movieunderbeer.domain.entities.films.Film
+import meh.daniel.com.movieunderbeer.domain.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.presentation.mvp.base.BaseView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType

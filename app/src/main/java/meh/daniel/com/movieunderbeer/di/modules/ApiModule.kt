@@ -5,9 +5,9 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import meh.daniel.com.movieunderbeer.app.Constants
-import meh.daniel.com.movieunderbeer.model.api.IDataSource
-import meh.daniel.com.movieunderbeer.model.api.Interceptor
-import meh.daniel.com.movieunderbeer.model.network.ResultAdapterFactory
+import meh.daniel.com.movieunderbeer.domain.model.api.IDataSource
+import meh.daniel.com.movieunderbeer.domain.model.api.Interceptor
+import meh.daniel.com.movieunderbeer.domain.model.network.ResultAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
