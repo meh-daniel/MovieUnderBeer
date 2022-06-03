@@ -7,9 +7,33 @@ ____
 ## three weeks later...
 
 
+### Использованные технологии: 
++ kotlin
++ moxy
++ cicerone
++ dagger2
++ retrofit
++ croutines
++ gson
++ material design
 
-
-
+### Архитектура:
++ app
+  + App
+  + Constants
++ di
+  + modules
+  + AppComponent
++ domain
+  + entities - бизнес сущности и вспомогательные сущности
+  + model - api retrofit, обработка ответа retrofit и repositories
++ presentation
+  + adapter - реализованный listAdapter общий для все
+  + mvp - moxy
+  + navigation - cicerone
+  + ui - fragments
+  + single activity
+    
 ____
 
 ## movie list screen
@@ -17,10 +41,10 @@ ____
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_3.jpg">|
 
-Use case: 
-Просмотр вертикального/горизонтального ячеек списка
-Сортировка ячеек фильмов по жанру
-Переход с ячейки фильмов на экран с деталями о фильме
+### Use case: 
++ Просмотр вертикального/горизонтального ячеек списка
++ Сортировка ячеек фильмов по жанру
++ Переход с ячейки фильмов на экран с деталями о фильме
 ____
 
 ## movie details screen
@@ -29,17 +53,17 @@ ____
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_2.jpg">|
 
-Use case: 
-Просмотр вертикального/горизонтального деталей о фильме
-Кнопка перехода назад
+### Use case: 
++ Просмотр вертикального/горизонтального деталей о фильме
++ Кнопка перехода назад
 ____
 
 ## error alert dialog screen
 <img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/error_alert_dialog.jpg" width="450" height="900">
 
-Use case: 
-Просмотр вертикального/горизонтального информации о ошибке
-Кнопка закрывающая окно
+### Use case: 
++ Просмотр вертикального/горизонтального информации о ошибке
++ Кнопка закрывающая окно
 
 
 
