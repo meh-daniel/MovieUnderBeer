@@ -1,2 +1,3 @@
 # MovieUnderBeerLite
-application movie finder lite
+
+![true](https://disk.yandex.ru/i/-yTTrF33faXx4w)
