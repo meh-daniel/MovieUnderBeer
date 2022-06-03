@@ -4,8 +4,7 @@ import meh.daniel.com.movieunderbeer.presentation.adapter.common.Item
 import meh.daniel.com.movieunderbeer.domain.entities.films.Film
 import meh.daniel.com.movieunderbeer.domain.entities.recyclerfeed.FeedGenre
 import meh.daniel.com.movieunderbeer.presentation.mvp.base.BaseView
-import moxy.viewstate.strategy.AddToEndStrategy
-import moxy.viewstate.strategy.StateStrategyType
+import moxy.viewstate.strategy.*
 
 @StateStrategyType(AddToEndStrategy::class)
 interface MovieListView : BaseView {
@@ -18,6 +17,7 @@ interface MovieListView : BaseView {
 
     fun onListGenreClick(genre: FeedGenre)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun showError(message: String)
 
 }

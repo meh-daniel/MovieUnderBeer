@@ -2,12 +2,14 @@ package meh.daniel.com.movieunderbeer.presentation.ui.moviedetails
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEach
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import meh.daniel.com.movieunderbeer.R
+import meh.daniel.com.movieunderbeer.databinding.AlertDialogErrorBinding
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieDetailsBinding
 import meh.daniel.com.movieunderbeer.domain.entities.films.Film
 import meh.daniel.com.movieunderbeer.presentation.navigation.common.IBackButtonListener
@@ -63,13 +65,19 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
                     filmTitleName.text = film.name
                 }
             }
-            textOverview.text = film.description
             filmYear.text = film.year.toString()
             when (film.rating) {
                 null ->
                     filmRating.text = resources.getText(R.string.unknown)
                 else -> {
                     filmRating.text = film.rating.toString()
+                }
+            }
+            when (film.description) {
+                null ->
+                    textOverview.text = resources.getText(R.string.unknown)
+                else -> {
+                    textOverview.text = film.description.toString()
                 }
             }
         }
@@ -95,7 +103,13 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        val dialogBinding: AlertDialogErrorBinding = AlertDialogErrorBinding.inflate(layoutInflater)
+        val dialog: AlertDialog = AlertDialog.Builder(this.requireContext(), R.style.dialog_error_theme)
+            .setView(dialogBinding.root)
+            .create()
+        dialog.show()
+        dialogBinding.errorBodyText.text = message
+        dialogBinding.errorButtonClose.setOnClickListener { dialog.dismiss() }
     }
 
     private fun genresGen(item: Film, chipGroup: ChipGroup){
