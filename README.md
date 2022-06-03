@@ -6,4 +6,6 @@
 ____
 ### three weeks later...
 
-https://news.store.rambler.ru/img/a25c962ec0e351e75f42d5c24699daaf?img-1-resize=width%3A1280%2Cheight%3A1280%2Cfit%3Acover&img-format=auto
+<p align="center">]
+  <img src="[your_relative_path_here_number_2_large_name](https://disk.yandex.ru/i/-yTTrF33faXx4w)" width="350" alt="accessibility text">
+</p>
