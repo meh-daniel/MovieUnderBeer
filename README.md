@@ -5,4 +5,5 @@
 
 ____
 ### three weeks later...
-[[![alt text](https://disk.yandex.ru/i/-yTTrF33faXx4w.png)](https://disk.yandex.ru/i/-yTTrF33faXx4w.png)](https://images2.russianblogs.com/276/2d/2d52cd05eb7723a0aaec25636b757804.png)
+
+https://news.store.rambler.ru/img/a25c962ec0e351e75f42d5c24699daaf?img-1-resize=width%3A1280%2Cheight%3A1280%2Cfit%3Acover&img-format=auto
