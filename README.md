@@ -15,7 +15,12 @@ ____
 + retrofit
 + croutines
 + gson
+
+### Дизайн сделан на основе: 
 + material design
++ coordinatorLayout
++ recyclerView
++ xml
 
 ### Архитектура:
 + app
