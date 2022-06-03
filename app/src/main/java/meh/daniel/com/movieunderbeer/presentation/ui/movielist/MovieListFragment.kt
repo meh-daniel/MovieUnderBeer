@@ -69,11 +69,19 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
 
     override fun showError(message: String) {
         val dialogBinding: AlertDialogErrorBinding = AlertDialogErrorBinding.inflate(layoutInflater)
-        val dialog: AlertDialog = AlertDialog.Builder(this.requireContext())
+        val dialog: AlertDialog = AlertDialog.Builder(this.requireContext(), R.style.dialog_error_theme)
             .setView(dialogBinding.root)
             .create()
         dialog.show()
+        dialogBinding.errorBodyText.text = message
         dialogBinding.errorButtonClose.setOnClickListener { dialog.dismiss() }
+    }
+
+    private fun initToolBar(){
+        with(binding){
+            includeToolbar.toolbar.title = resources.getText(R.string.movies)
+            includeToolbar.toolbarNavigationBackButton.visibility = View.GONE
+        }
     }
 
     private fun setupAdapter() {
@@ -81,13 +89,6 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
             contentFilms.layoutManager = GridLayoutManager(context, 4)
             contentFilms.adapter = this@MovieListFragment.adapter
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        }
-    }
-
-    private fun initToolBar(){
-        with(binding){
-            includeToolbar.toolbar.title = resources.getText(R.string.movies)
-            includeToolbar.toolbarNavigationBackButton.visibility = View.GONE
         }
     }
 

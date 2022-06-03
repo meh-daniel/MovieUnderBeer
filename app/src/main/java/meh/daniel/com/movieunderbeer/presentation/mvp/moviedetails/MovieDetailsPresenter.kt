@@ -44,7 +44,7 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
             }
             viewState.loadFilm(filmData)
         }else{
-            Log.d("xxx:", "${response.toString()}")
+            viewState.showError(response.toString())
         }
 
     }

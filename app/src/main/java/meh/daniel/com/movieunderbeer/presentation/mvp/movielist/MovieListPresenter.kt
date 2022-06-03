@@ -1,7 +1,6 @@
 package meh.daniel.com.movieunderbeer.presentation.mvp.movielist
 
 import android.net.Uri
-import android.util.Log
 import kotlinx.coroutines.*
 import meh.daniel.com.movieunderbeer.presentation.adapter.common.Item
 import meh.daniel.com.movieunderbeer.app.App
@@ -41,9 +40,21 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         }
     }
 
-    fun openFilm(film : Film){
-        film.id?.let {
-            router.navigateTo(screens.openFilm(film.id))
+    fun openFilm(film : Film): Unit = runBlocking {
+        val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
+        val repo = RepositoryModule().filmRepository(api)
+        val response: Result<FilmData> = (Dispatchers.Default){
+            repo.loadFilms()
+        }
+
+        if(response.isSuccess()){
+
+            film.id?.let {
+                router.navigateTo(screens.openFilm(film.id))
+            }
+
+        }else{
+            viewState.showError(response.toString())
         }
     }
 
@@ -56,8 +67,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         }
 
         if(response.isSuccess()){
-            val contributors = response.asSuccess().value
-            Log.d("xxx:", "${contributors.toString()}")
 
             val data = mutableListOf<Item>()
 
@@ -82,7 +91,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             viewState.setData(data)
 
         } else{
-            Log.d("xxx:", "${response.toString()}")
+            viewState.showError(response.toString())
         }
     }
 
@@ -95,9 +104,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         }
 
         if(response.isSuccess()){
-            val contributors = response.asSuccess().value
-            Log.d("xxx:", "${contributors.toString()}")
-
             val data = mutableListOf<Item>()
 
             val listHeaderGenre: MutableList<Item> = (Dispatchers.Default){
@@ -121,7 +127,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             viewState.setData(data)
 
         } else{
-            viewState.showError("dfasdf")
+            viewState.showError(response.toString())
         }
 
 
@@ -227,7 +233,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         val items = getItems.films
 
         if (items != null) {
-            for (i in items.indices) {
+            for (item in items.indices) {
 
                 for (i in 0 until items.count()) {
                     val genres = items[i].genres

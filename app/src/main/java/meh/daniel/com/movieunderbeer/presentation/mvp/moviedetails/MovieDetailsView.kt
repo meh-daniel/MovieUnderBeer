@@ -2,8 +2,7 @@ package meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails
 
 import meh.daniel.com.movieunderbeer.domain.entities.films.Film
 import meh.daniel.com.movieunderbeer.presentation.mvp.base.BaseView
-import moxy.viewstate.strategy.AddToEndStrategy
-import moxy.viewstate.strategy.StateStrategyType
+import moxy.viewstate.strategy.*
 
 @StateStrategyType(AddToEndStrategy::class)
 interface MovieDetailsView : BaseView {
@@ -12,6 +11,7 @@ interface MovieDetailsView : BaseView {
 
     fun loadFilm(film: Film)
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun showError(message: String)
 
 }

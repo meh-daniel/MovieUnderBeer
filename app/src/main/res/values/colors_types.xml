@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!--    светлая тема-->
     <!--    Цвета основных первичных компонентов-->
     <color name="primary_color">@color/yellow_700</color>
     <color name="primary_color_dark">@color/yellow_700_dark</color>
     <color name="primary_color_light">@color/yellow_700_light</color>
 
-    <!--    Цвета основных первичных компонентов-->
-    <color name="secondary_color">@color/yellow_700</color>
-    <color name="secondary_color_dark">@color/yellow_700_dark</color>
+    <!--    Цвета основных вторичных компонентов-->
+    <color name="secondary_color">@color/yellow_700_monochrome</color>
+    <color name="secondary_color_dark">@color/yellow_700_monochrome_light</color>
     <color name="secondary_color_light">@color/yellow_700_light</color>
 
     <!--    фон приложения-->
@@ -27,6 +27,7 @@
     <color name="ic_launcher_background">#000000</color>
 
 
+    <!--    темная тема-->
     <!--    Цвета основных первичных компонентов-->
     <color name="night_primary">#0d512d</color>
     <color name="night_primary_light">#3f7e56</color>
