@@ -6,6 +6,4 @@
 ____
 ### three weeks later...
 
-<p align="center">
-  <img src="https://disk.yandex.ru/i/-yTTrF33faXx4w" width="350" alt="accessibility text">
-</p>
+![Snip20210504_5](https://user-images.githubusercontent.com/6824465/116990253-c39ab780-acca-11eb-9f20-eb0f985b529c.png)
