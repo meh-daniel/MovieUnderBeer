@@ -31,7 +31,7 @@ ____
   + AppComponent
 + domain
   + entities - бизнес сущности и вспомогательные сущности
-  + model - api retrofit, обработка ответа retrofit и repositories
+  + model - api retrofit, кастомный CallAdapterFactory и repositories
 + presentation
   + adapter - реализованный listAdapter общий для все
   + mvp - moxy
