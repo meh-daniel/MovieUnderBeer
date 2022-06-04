@@ -37,7 +37,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentMovieListBinding.inflate(inflater, container, false)
 
-    override fun injectDependency(){
+    override fun injectDependency() {
         movieListPresenter.injectDependency()
     }
 
@@ -59,11 +59,11 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
         }
     }
 
-    override fun onListFilmClick(film: Film)  {
+    override fun onListFilmClick(film: Film) {
         movieListPresenter.openFilm(film)
     }
 
-    override fun onListGenreClick(genre: FeedGenre)  {
+    override fun onListGenreClick(genre: FeedGenre) {
         movieListPresenter.getMovieBySelect(genre)
     }
 
@@ -77,7 +77,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
         dialogBinding.errorButtonClose.setOnClickListener { dialog.dismiss() }
     }
 
-    private fun initToolBar(){
+    private fun initToolBar() {
         with(binding){
             includeToolbar.toolbar.title = resources.getText(R.string.movies)
             includeToolbar.toolbarNavigationBackButton.visibility = View.GONE
@@ -89,6 +89,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
             contentFilms.layoutManager = GridLayoutManager(context, 4)
             contentFilms.adapter = this@MovieListFragment.adapter
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+            contentFilms.isMotionEventSplittingEnabled = false
         }
     }
 
