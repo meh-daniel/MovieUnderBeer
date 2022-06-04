@@ -9,7 +9,7 @@
     android:layout_margin="@dimen/marginDefaultLayout"
     card_view:cardCornerRadius="15dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/film_background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +24,7 @@
         android:padding="16dp"
         android:background="@android:drawable/screen_background_dark_transparent"
         android:orientation="vertical">
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/film_title_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

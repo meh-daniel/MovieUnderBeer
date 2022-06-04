@@ -24,7 +24,7 @@
             app:toolbarId="@+id/toolbar"
             style="@style/Widget.MaterialComponents.Toolbar.Primary">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_movie_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
