@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_title_localized_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,27 +29,51 @@
         tools:text="Movie localized name"
         style="@style/film_title_localized_name_theme"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_title_name"
+        style="@style/film_title_name_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/film_title_localized_name"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Movie no localized name"
-        style="@style/film_title_name_theme"/>
+        app:layout_constraintTop_toBottomOf="@+id/film_title_localized_name"
+        tools:text="Movie no localized name"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/label_overview_genre"
+        style="@style/text_overline_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/overview_genres"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/film_title_name"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_label_info"
+        style="@style/text_overview_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:text="@string/missing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_overview_genre"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/film_group_genre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/film_title_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_label_info"/>
 
     <View
         android:id="@+id/view_divider_first"
@@ -61,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/film_group_genre"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,7 +97,7 @@
         tools:text="7.666"
         style="@style/film_data_theme"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/label_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view_divider_first"/>
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,7 +133,7 @@
         style="@style/film_data_theme"/>
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/label_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -131,19 +155,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view_divider_first"/>
 
-    <TextView
-        android:id="@+id/label_overview"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/label_overview_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/info_about_movie"
+        android:layout_marginTop="16dp"
+        android:text="@string/overview_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_second"
         style="@style/text_overline_theme"/>
 
-    <TextView
-        android:id="@+id/text_overview"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/film_text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -152,7 +176,7 @@
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_overview"
+        app:layout_constraintTop_toBottomOf="@+id/label_overview_description"
         style="@style/text_overview_theme"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

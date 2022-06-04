@@ -1,16 +1,21 @@
 <resources>
+
     <string name="app_name">MovieUnder Beer</string>
 
     <!--    content_list_movie-->
     <string name="genres">Жанры</string>
     <string name="movies">Фильмы</string>
     <!--    content_details_movie-->
-    <string name="release_date">Дата выхода</string>
+
+    <string name="overview_genres">Жанры фильма:</string>
     <string name="rating">Рейтинг</string>
-    <string name="info_about_movie">Детали о фильме</string>
+    <string name="release_date">Дата выхода</string>
+    <string name="overview_description">Описание о фильме:</string>
     <string name="toolbar_movie">О фильме</string>
-    <string name="unknown">неизвестно</string>
+    <string name="missing">отсутствует</string>
+
     <!--    alert_dialog_error-->
     <string name="alert_dialog_error_header_title">Ой-ёйй, что тут у нас?</string>
-    <string name="error_button">не хорошо...</string>
+    <string name="error_button">не хорошо…</string>
+
 </resources>
