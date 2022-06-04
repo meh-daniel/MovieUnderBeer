@@ -65,19 +65,32 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
                     filmTitleName.text = film.name
                 }
             }
-            filmYear.text = film.year.toString()
+            when(film.genres?.size){
+                0 ->
+                    textLabelInfo.visibility = View.VISIBLE
+                else -> {
+                    genresGen(item = film, filmGroupGenre)
+                }
+            }
             when (film.rating) {
                 null ->
-                    filmRating.text = resources.getText(R.string.unknown)
+                    filmRating.text = resources.getText(R.string.missing)
                 else -> {
                     filmRating.text = film.rating.toString()
                 }
             }
+            when (film.year) {
+                null ->
+                    filmYear.text = resources.getText(R.string.missing)
+                else -> {
+                    filmYear.text = film.year.toString()
+                }
+            }
             when (film.description) {
                 null ->
-                    textOverview.text = resources.getText(R.string.unknown)
+                    textDescription.text = resources.getText(R.string.missing)
                 else -> {
-                    textOverview.text = film.description.toString()
+                    textDescription.text = film.description.toString()
                 }
             }
         }
@@ -99,7 +112,6 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
                 }
             }
         }
-        genresGen(item = film, binding.includeContent.filmGroupGenre)
     }
 
     override fun showError(message: String) {
