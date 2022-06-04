@@ -66,8 +66,10 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
                 }
             }
             when(film.genres?.size){
-                0 ->
+                0 ->{
                     textLabelInfo.visibility = View.VISIBLE
+                    filmGroupGenre.visibility = View.GONE
+                }
                 else -> {
                     genresGen(item = film, filmGroupGenre)
                 }
@@ -88,9 +90,9 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
             }
             when (film.description) {
                 null ->
-                    textDescription.text = resources.getText(R.string.missing)
+                    filmTextDescription.text = resources.getText(R.string.missing)
                 else -> {
-                    textDescription.text = film.description.toString()
+                    filmTextDescription.text = film.description.toString()
                 }
             }
         }
