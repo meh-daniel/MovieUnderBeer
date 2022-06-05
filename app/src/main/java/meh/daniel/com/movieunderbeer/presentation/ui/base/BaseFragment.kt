@@ -15,6 +15,7 @@ abstract class BaseFragment<B : ViewBinding> : MvpAppCompatFragment(){
     protected lateinit var router: Router
 
     private var _viewBinding: B ?= null
+
     protected val binding get() = checkNotNull(_viewBinding)
 
     protected  abstract fun initBinding(inflater: LayoutInflater, container: ViewGroup?) : B
@@ -34,6 +35,5 @@ abstract class BaseFragment<B : ViewBinding> : MvpAppCompatFragment(){
     }
 
     abstract fun injectDependency()
-
 
 }

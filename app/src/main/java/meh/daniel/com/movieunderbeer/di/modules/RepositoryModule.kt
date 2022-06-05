@@ -16,5 +16,4 @@ class RepositoryModule {
         api: IDataSource
     ): IFilmRepository = RetrofitFilmRepository(api)
 
-
 }

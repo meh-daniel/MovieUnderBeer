@@ -54,7 +54,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
 
     override fun onStop() {
         super.onStop()
-        movieListPresenter.lastFilmId = null
+        movieListPresenter.setLastFilmIdNull()
     }
 
     override fun init() {
@@ -99,10 +99,14 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
         with(binding) {
             contentFilms.layoutManager = GridLayoutManager(context, 4)
             contentFilms.adapter = this@MovieListFragment.adapter
+
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
             contentFilms.isMotionEventSplittingEnabled = false
+
             contentFilms.addItemDecoration(FeedHorizontalDividerItemDecoration(64))
             contentFilms.addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 50, 25))
+
             contentFilms.itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
                 animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
                 animator.addViewTypeAnimation(R.layout.item_header, SlideInTopCommonAnimator())
@@ -110,6 +114,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
                 animator.addDuration = 500L
                 animator.removeDuration = 500L
             }
+
         }
     }
 

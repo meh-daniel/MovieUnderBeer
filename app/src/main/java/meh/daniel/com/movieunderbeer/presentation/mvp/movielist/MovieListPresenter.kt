@@ -21,6 +21,10 @@ import moxy.InjectViewState
 @InjectViewState
 class MovieListPresenter : BasePresenter<MovieListView>() {
 
+    //костыль позволяющий не вызывать двойные окна подряд с тем же фильмом в openFilm
+    //в movieListFragment в ЖЦ onStop вызывается setLAstFIlmIdNull
+    private var lastFilmId : Int? = null
+
     override fun injectDependency() {
         App.instance.appComponent.inject(this)
     }
@@ -38,7 +42,11 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             getMovieByGenre(genre)
         }
     }
-    var lastFilmId : Int? = null
+
+    fun setLastFilmIdNull(){
+        lastFilmId = null
+    }
+
     fun openFilm(film : Film): Unit = runBlocking {
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
         val repo = RepositoryModule().filmRepository(api)

@@ -5,7 +5,6 @@ import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEach
 import androidx.core.view.isEmpty
-import androidx.core.view.isNotEmpty
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -19,7 +18,6 @@ import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsP
 import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsView
 import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
 import moxy.presenter.InjectPresenter
-
 
 class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieDetailsView, IBackButtonListener {
 

@@ -46,7 +46,6 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
         }else{
             viewState.showError(response.toString())
         }
-
     }
 
     private fun getListFilms(response: Result<FilmData>, idFilm: Int) : Film{
@@ -89,4 +88,5 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
         return filmData
     }
+
 }
