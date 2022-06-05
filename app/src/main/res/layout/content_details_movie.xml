@@ -117,7 +117,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="@color/primary_color"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_block_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,8 +127,8 @@
         android:id="@+id/label_overview_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/margin_horizontal_block_header"
+        android:layout_marginTop="@dimen/margin_vertical_block_header"
         android:text="@string/overview_genres"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_divider_second"
@@ -139,8 +139,8 @@
         style="@style/text_overview_theme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_block_content"
+        android:layout_marginTop="@dimen/margin_vertical_block_content"
         android:visibility="gone"
         android:text="@string/missing"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,8 +150,8 @@
         android:id="@+id/film_group_genre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_block_content"
+        android:layout_marginTop="@dimen/margin_vertical_block_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_label_info"/>
@@ -164,25 +164,25 @@
         android:background="@color/invisibility"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/film_group_genre" />
+        app:layout_constraintTop_toBottomOf="@+id/film_group_genre"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/label_overview_description"
         style="@style/text_overline_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/margin_horizontal_block_header"
+        android:layout_marginTop="@dimen/margin_vertical_block_header"
         android:text="@string/overview_description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/film_group_genre" />
+        app:layout_constraintTop_toBottomOf="@+id/film_group_genre"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/film_text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_block_content"
+        android:layout_marginTop="@dimen/margin_vertical_block_content"
         android:paddingBottom="8dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintEnd_toEndOf="parent"
