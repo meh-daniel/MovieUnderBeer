@@ -27,7 +27,6 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-
         viewState.init()
         getMovie()
     }
@@ -39,7 +38,7 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
             getMovieByGenre(genre)
         }
     }
-
+    var lastFilmId : Int? = null
     fun openFilm(film : Film): Unit = runBlocking {
         val api = ApiModule().api(Constants.API_URL, ApiModule().gson())
         val repo = RepositoryModule().filmRepository(api)
@@ -48,11 +47,12 @@ class MovieListPresenter : BasePresenter<MovieListView>() {
         }
 
         if(response.isSuccess()){
-
-            film.id?.let {
-                router.navigateTo(screens.openFilm(film.id))
+            if ( (lastFilmId == null) || (lastFilmId != film.id) ){
+                film.id?.let {
+                    lastFilmId = film.id.toInt()
+                    router.navigateTo(screens.openFilm(film.id))
+                }
             }
-
         }else{
             viewState.showError(response.toString())
         }
