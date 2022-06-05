@@ -32,15 +32,4 @@
     <!--    mipmap-->
     <color name="ic_launcher_background">#000000</color>
 
-
-    <!--    темная тема-->
-    <!--    Цвета основных первичных компонентов-->
-    <color name="night_primary">#0d512d</color>
-    <color name="night_primary_light">#3f7e56</color>
-    <color name="night_primary_dark">#002804</color>
-    <!--    Цвета основных первичных компонентов-->
-    <color name="night_secondary">#fdd835</color>
-    <color name="night_secondary_light">#ffff6b</color>
-    <color name="night_secondary_dark">#c6a700</color>
-
 </resources>

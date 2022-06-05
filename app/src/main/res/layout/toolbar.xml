@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/heightToolbarMaterialDesign"
+    android:layout_height="@dimen/height_toolbar_material_design"
     android:theme="@style/AppBarOverlay"
     app:layout_collapseMode="pin"
     app:popupTheme="@style/PopupOverlay">
