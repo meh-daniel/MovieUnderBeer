@@ -6,6 +6,7 @@ import meh.daniel.com.movieunderbeer.di.DaggerAppComponent
 import meh.daniel.com.movieunderbeer.di.modules.CiceroneModule
 
 class App : Application() {
+
     companion object {
         lateinit var instance: App
     }
@@ -19,4 +20,5 @@ class App : Application() {
             .ciceroneModule(CiceroneModule())
             .build()
     }
+
 }

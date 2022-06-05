@@ -12,13 +12,12 @@ import javax.inject.Inject
 
 class AppActivity : MvpAppCompatActivity() {
 
-
     @Inject
     lateinit var navigatorHolder : NavigatorHolder
     @Inject
     lateinit var screens: IScreens
     @Inject
-    lateinit var AppScreens: IScreens
+    lateinit var appScreens: IScreens
 
     private lateinit var vb: ActivityAppBinding
     private val navigator : Navigator = AppNavigator(this, R.id.container)
@@ -29,7 +28,7 @@ class AppActivity : MvpAppCompatActivity() {
         vb = ActivityAppBinding.inflate(layoutInflater)
         setContentView(vb.root)
         if (savedInstanceState == null){
-            navigator.applyCommands(arrayOf<Command>(Replace(AppScreens.homeScreen())))
+            navigator.applyCommands(arrayOf<Command>(Replace(appScreens.homeScreen())))
         }
     }
 

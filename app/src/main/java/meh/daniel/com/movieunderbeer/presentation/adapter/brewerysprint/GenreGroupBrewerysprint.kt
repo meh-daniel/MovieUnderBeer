@@ -48,6 +48,8 @@ class GenreGroupViewHolder(
 ) : BaseViewHolder<ItemGroupChipGenreBinding, FeedGenreGroup>(binding) {
 
     //https://music.yandex.ru/album/15820215/track/83859506
+    //в ином случае при пересоздании ячейки с чипами вызывается копия которая дополняет
+    //уже существующую чип группу
     private var wtf = 1
 
     override fun onBind(item: FeedGenreGroup) = with(binding) {
