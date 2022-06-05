@@ -34,7 +34,7 @@ ____
 <img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/error_alert_dialog.jpg" width="450" height="900">
 
 ### Use case: 
-+ Просмотр вертикального/горизонтального информации о ошибке
++ Просмотр вертикального/горизонтального информации об ошибке
 + Кнопка закрывающая окно
 
 ____
