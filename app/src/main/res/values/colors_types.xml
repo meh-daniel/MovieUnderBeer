@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--    светлая тема-->
+
     <!--    Цвета основных первичных компонентов-->
     <color name="primary_color">@color/yellow_700</color>
     <color name="primary_color_dark">@color/yellow_700_dark</color>
@@ -29,6 +30,7 @@
     <color name="color_text_dark_secondary">#AB000000</color>
     <color name="color_text_dark_secondary_light">#AB000000</color>
     <color name="color_text_dark_secondary_dark">#B4000000</color>
+
     <!--    mipmap-->
     <color name="ic_launcher_background">#000000</color>
 

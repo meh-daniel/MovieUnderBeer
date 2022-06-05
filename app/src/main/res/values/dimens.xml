@@ -2,8 +2,10 @@
 <resources>
 
     <dimen name="margin_default_layout">8dp</dimen>
+
     <!--    toolbar-->
     <dimen name="height_toolbar_material_design">54dp</dimen>
+
     <!--    movie details-->
     <dimen name="margin_horizontal_block_header">8dp</dimen>
     <dimen name="margin_vertical_block_header">16dp</dimen>

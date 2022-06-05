@@ -5,8 +5,8 @@
     <!--    content_list_movie-->
     <string name="genres">Жанры</string>
     <string name="movies">Фильмы</string>
-    <!--    content_details_movie-->
 
+    <!--    content_details_movie-->
     <string name="overview_genres">Жанры фильма:</string>
     <string name="rating">Рейтинг</string>
     <string name="release_date">Дата выхода</string>
