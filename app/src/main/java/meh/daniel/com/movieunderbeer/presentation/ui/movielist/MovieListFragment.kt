@@ -18,6 +18,10 @@ import meh.daniel.com.movieunderbeer.presentation.adapter.brewerysprint.HeaderBr
 import meh.daniel.com.movieunderbeer.databinding.FragmentMovieListBinding
 import meh.daniel.com.movieunderbeer.domain.entities.films.Film
 import meh.daniel.com.movieunderbeer.domain.entities.recyclerfeed.FeedGenre
+import meh.daniel.com.movieunderbeer.presentation.adapter.animations.AddableItemAnimator
+import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SimpleCommonAnimator
+import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SlideInLeftCommonAnimator
+import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SlideInTopCommonAnimator
 import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListPresenter
 import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListView
 import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
@@ -95,6 +99,13 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
             contentFilms.adapter = this@MovieListFragment.adapter
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             contentFilms.isMotionEventSplittingEnabled = false
+            contentFilms.itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
+                animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
+                animator.addViewTypeAnimation(R.layout.item_header, SlideInTopCommonAnimator())
+                animator.addViewTypeAnimation(R.layout.item_group_chip_genre, SlideInTopCommonAnimator())
+                animator.addDuration = 500L
+                animator.removeDuration = 500L
+            }
         }
     }
 
