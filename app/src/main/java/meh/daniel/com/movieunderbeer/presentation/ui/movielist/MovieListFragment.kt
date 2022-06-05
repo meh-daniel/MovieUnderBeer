@@ -46,6 +46,11 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
         injectDependency()
     }
 
+    override fun onStop() {
+        super.onStop()
+        movieListPresenter.lastFilmId = null
+    }
+
     override fun init() {
         initToolBar()
         setupAdapter()

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEach
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -127,19 +129,21 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
     }
 
     private fun genresGen(item: Film, chipGroup: ChipGroup){
-        for (i in item.genres!!) {
-            val chipGenre = Chip(context)
-            val chipGenreDrawable = ChipDrawable.createFromAttributes(
-                chipGroup.context,
-                null,
-                0,
-                R.style.chips_theme
-            )
-            chipGenre.setChipDrawable(chipGenreDrawable)
-            chipGenre.text = i
-            chipGroup.addView(chipGenre)
+        if (chipGroup.isEmpty()){
+            for (i in item.genres!!) {
+                val chipGenre = Chip(context)
+                val chipGenreDrawable = ChipDrawable.createFromAttributes(
+                    chipGroup.context,
+                    null,
+                    0,
+                    R.style.chips_theme
+                )
+                chipGenre.setChipDrawable(chipGenreDrawable)
+                chipGenre.text = i
+                chipGroup.addView(chipGenre)
+            }
+            chipGroup.forEach { it.isEnabled = false }
         }
-        chipGroup.forEach { it.isEnabled = false }
     }
 
     private fun initListenerActionsFilm(){
@@ -149,7 +153,5 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
             }
         }
     }
-
-
 
 }
