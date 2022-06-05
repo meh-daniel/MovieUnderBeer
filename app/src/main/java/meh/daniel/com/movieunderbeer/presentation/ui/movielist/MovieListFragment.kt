@@ -22,6 +22,8 @@ import meh.daniel.com.movieunderbeer.presentation.adapter.animations.AddableItem
 import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SimpleCommonAnimator
 import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SlideInLeftCommonAnimator
 import meh.daniel.com.movieunderbeer.presentation.adapter.animations.custom.SlideInTopCommonAnimator
+import meh.daniel.com.movieunderbeer.presentation.adapter.decorations.FeedHorizontalDividerItemDecoration
+import meh.daniel.com.movieunderbeer.presentation.adapter.decorations.GroupVerticalItemDecoration
 import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListPresenter
 import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListView
 import meh.daniel.com.movieunderbeer.presentation.ui.base.BaseFragment
@@ -99,6 +101,8 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(), MovieListVie
             contentFilms.adapter = this@MovieListFragment.adapter
             adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             contentFilms.isMotionEventSplittingEnabled = false
+            contentFilms.addItemDecoration(FeedHorizontalDividerItemDecoration(64))
+            contentFilms.addItemDecoration(GroupVerticalItemDecoration(R.layout.item_film, 50, 25))
             contentFilms.itemAnimator = AddableItemAnimator(SimpleCommonAnimator()).also { animator ->
                 animator.addViewTypeAnimation(R.layout.item_film, SlideInLeftCommonAnimator())
                 animator.addViewTypeAnimation(R.layout.item_header, SlideInTopCommonAnimator())
