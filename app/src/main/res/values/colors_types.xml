@@ -8,21 +8,27 @@
 
     <!--    Цвета основных вторичных компонентов-->
     <color name="secondary_color">@color/yellow_700_monochrome</color>
-    <color name="secondary_color_dark">@color/yellow_700_monochrome_light</color>
-    <color name="secondary_color_light">@color/yellow_700_light</color>
+    <color name="secondary_color_dark">@color/yellow_700_monochrome_dark</color>
+    <color name="secondary_color_light">@color/yellow_700_monochrome_light</color>
 
     <!--    фон приложения-->
-    <color name="background">@color/yellow_700_light</color>
+    <color name="background">@color/primary_color_light</color>
 
     <!--    смена цветов выбора у chip-->
-    <color name="select_first_chip">@color/yellow_700_monochrome</color>
-    <color name="select_second_chip">@color/yellow_700_monochrome_dark</color>
+    <color name="select_first_chip">@color/secondary_color</color>
+    <color name="select_second_chip">@color/secondary_color_dark</color>
 
     <!--    50 оттенков черного текста-->
-    <color name="color_dark_primary">#AB000000</color>
-    <color name="color_dark_primary_light">#AB000000</color>
-    <color name="color_dark_primary_dark">#B4000000</color>
-
+    <color name="color_text_dark_primary">#F5000000</color>
+    <color name="color_text_dark_primary_darkened_1">#9A000000</color>
+    <color name="color_text_dark_primary_darkened_2">#A8000000</color>
+    <color name="color_text_dark_primary_darkened_3">#A4000000</color>
+    <color name="color_text_dark_primary_darkened_4">#DF000000</color>
+    <color name="color_text_dark_primary_light">#AB000000</color>
+    <color name="color_text_dark_primary_dark">#B4000000</color>
+    <color name="color_text_dark_secondary">#AB000000</color>
+    <color name="color_text_dark_secondary_light">#AB000000</color>
+    <color name="color_text_dark_secondary_dark">#B4000000</color>
     <!--    mipmap-->
     <color name="ic_launcher_background">#000000</color>
 
