@@ -24,4 +24,5 @@ internal abstract class CallDelegate<In, Out>(protected val proxy: Call<In>) : C
     abstract fun enqueueImpl(callback: Callback<Out>)
 
     abstract fun cloneImpl(): Call<Out>
+
 }

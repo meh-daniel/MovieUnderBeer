@@ -14,7 +14,6 @@ class ResultAdapterFactory : CallAdapter.Factory() {
             if (returnType is ParameterizedType) {
                 val callInnerType: Type = getParameterUpperBound(0, returnType)
                 if (getRawType(callInnerType) == Result::class.java) {
-                    // resultType is Call<Result<*>> | callInnerType is Result<*>
                     if (callInnerType is ParameterizedType) {
                         val resultInnerType = getParameterUpperBound(0, callInnerType)
                         return ResultCallAdapter<Any?>(resultInnerType)
