@@ -1,7 +1,6 @@
 package meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails
 
 import android.net.Uri
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import kotlinx.coroutines.runBlocking
@@ -40,7 +39,7 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
 
         if(response.isSuccess()){
             val filmData : Film = (Dispatchers.Default){
-                getListFilms(response, id)
+                getDetailsFilm(response, id)
             }
             viewState.loadFilm(filmData)
         }else{
@@ -48,7 +47,7 @@ class MovieDetailsPresenter : BasePresenter<MovieDetailsView>() {
         }
     }
 
-    private fun getListFilms(response: Result<FilmData>, idFilm: Int) : Film{
+    private fun getDetailsFilm(response: Result<FilmData>, idFilm: Int) : Film{
         lateinit var filmData : Film
 
         val getItems = response.asSuccess().value

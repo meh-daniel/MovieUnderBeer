@@ -71,7 +71,7 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
                     filmGroupGenre.visibility = View.GONE
                 }
                 else -> {
-                    genresGen(item = film, filmGroupGenre)
+                    genresGenerateGet(item = film, filmGroupGenre)
                 }
             }
             when (film.rating) {
@@ -126,7 +126,7 @@ class MovieDetailsFragment : BaseFragment<FragmentMovieDetailsBinding>(), MovieD
         dialogBinding.errorButtonClose.setOnClickListener { dialog.dismiss() }
     }
 
-    private fun genresGen(item: Film, chipGroup: ChipGroup){
+    private fun genresGenerateGet(item: Film, chipGroup: ChipGroup){
         if (chipGroup.isEmpty()){
             for (i in item.genres!!) {
                 val chipGenre = Chip(context)
