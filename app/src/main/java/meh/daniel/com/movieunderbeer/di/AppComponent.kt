@@ -2,6 +2,7 @@ package meh.daniel.com.movieunderbeer.di
 
 import dagger.Component
 import meh.daniel.com.movieunderbeer.di.modules.*
+import meh.daniel.com.movieunderbeer.di.modules.ApiModule
 import meh.daniel.com.movieunderbeer.presentation.mvp.moviedetails.MovieDetailsPresenter
 import meh.daniel.com.movieunderbeer.presentation.mvp.movielist.MovieListPresenter
 import meh.daniel.com.movieunderbeer.presentation.AppActivity
