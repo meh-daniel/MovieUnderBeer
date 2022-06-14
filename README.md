@@ -1,6 +1,6 @@
 # MovieUnderBeer
 
-<img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/preview.jpg" width="1200" height="600">
+<img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/preview.jpg" width="1200" height="600">
 
 ____
 
@@ -11,7 +11,7 @@ ____
 ## movie list screen
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/preview.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_3.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_3.jpg">|
 
 ### Use case: 
 + Просмотр вертикального/горизонтального ячеек списка
@@ -23,7 +23,7 @@ ____
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_2.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/photoGitHubReadme/filmdetails_2.jpg">|
 
 ### Use case: 
 + Просмотр вертикального/горизонтального деталей о фильме
