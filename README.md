@@ -11,7 +11,7 @@ ____
 ## movie list screen
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_3.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/movielist_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_3.jpg">|
 
 ### Use case: 
 + Просмотр вертикального/горизонтального ячеек списка
@@ -23,7 +23,7 @@ ____
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_2.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_2.jpg">|
 
 ### Use case: 
 + Просмотр вертикального/горизонтального деталей о фильме
@@ -31,7 +31,7 @@ ____
 ____
 
 ## error alert dialog screen
-<img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/error_alert_dialog.jpg" width="450" height="900">
+<img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/error_alert_dialog.jpg" width="450" height="900">
 
 ### Use case: 
 + Просмотр вертикального/горизонтального информации об ошибке
