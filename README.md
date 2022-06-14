@@ -23,7 +23,7 @@ ____
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/photoGitHubReadme/filmdetails_2.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/filmdetails_2.jpg">|
 
 ### Use case: 
 + Просмотр вертикального/горизонтального деталей о фильме
